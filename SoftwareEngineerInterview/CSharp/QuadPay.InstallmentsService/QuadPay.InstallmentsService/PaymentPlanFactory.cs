@@ -1,3 +1,5 @@
+using QuadPay.InstallmentsService.Models;
+
 namespace QuadPay.InstallmentsService
 {
     /// <summary>
