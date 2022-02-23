@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuadPay.InstallmentsService
+namespace Zip.InstallmentsService
 {
     /// <summary>
     /// Data structure which defines all the properties for a purchase installment plan.

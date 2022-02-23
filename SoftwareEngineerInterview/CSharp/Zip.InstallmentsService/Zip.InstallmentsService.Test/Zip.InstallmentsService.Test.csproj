@@ -6,6 +6,8 @@
     <IsPackable>false</IsPackable>
 
     <LangVersion>8</LangVersion>
+
+    <RootNamespace>Zip.InstallmentsService.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuadPay.InstallmentsService\QuadPay.InstallmentsService.csproj" />
+    <ProjectReference Include="..\Zip.InstallmentsService\Zip.InstallmentsService.csproj" />
   </ItemGroup>
 
 </Project>

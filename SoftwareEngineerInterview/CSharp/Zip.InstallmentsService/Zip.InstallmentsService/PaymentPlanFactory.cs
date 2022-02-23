@@ -1,7 +1,7 @@
-namespace QuadPay.InstallmentsService
+namespace Zip.InstallmentsService
 {
     /// <summary>
-    /// This class is responsible for building the PaymentPlan according to the QuadPay product definition.
+    /// This class is responsible for building the PaymentPlan according to the Zip product definition.
     /// </summary>
     public class PaymentPlanFactory
     {

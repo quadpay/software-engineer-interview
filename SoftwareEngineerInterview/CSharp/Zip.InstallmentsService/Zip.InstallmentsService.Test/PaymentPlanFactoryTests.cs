@@ -1,7 +1,7 @@
 using Shouldly;
 using Xunit;
 
-namespace QuadPay.InstallmentsService.Test
+namespace Zip.InstallmentsService.Test
 {
     public class PaymentPlanFactoryTests
     {
