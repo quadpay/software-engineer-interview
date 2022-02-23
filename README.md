@@ -1,18 +1,18 @@
-# QuadPay Software Engineer Interview
+# Zip Software Engineer Interview
 
 ## Overview
 
-QuadPay is a payment gateway that lets consumers split purchases into 4 interest free installments, every two weeks. The first 25% is taken when the purchase is made, and the remaining 3 installments of 25% are automatically taken every 14 days. We help customers manage their cash-flow while helping merchants increase conversion rates and average order values.
+Zip is a payment gateway that lets consumers split purchases into 4 interest free installments, every two weeks. The first 25% is taken when the purchase is made, and the remaining 3 installments of 25% are automatically taken every 14 days. We help customers manage their cash-flow while helping merchants increase conversion rates and average order values.
 
-It may help to see our [product in action online](https://www.fanatics.com/mlb/new-york-yankees/new-york-yankees-nike-home-replica-custom-jersey-white/o-8976+t-36446587+p-2520909211+z-8-3193055640?_ref=p-CLP:m-GRID:i-r0c1:po-1), checkout our app on [ios](https://apps.apple.com/us/app/quadpay-buy-now-pay-later/id1425045070) or [android](https://play.google.com/store/apps/details?id=com.quadpay.quadpay&hl=en_US), and to read our documentation (https://docs.quadpay.com).
+It may help to see our [product in action online](https://www.fanatics.com/mlb/new-york-yankees/new-york-yankees-nike-home-replica-custom-jersey-white/o-8976+t-36446587+p-2520909211+z-8-3193055640?_ref=p-CLP:m-GRID:i-r0c1:po-1), checkout our app on [ios](https://apps.apple.com/us/app/quadpay-buy-now-pay-later/id1425045070) or [android](https://play.google.com/store/apps/details?id=com.quadpay.quadpay&hl=en_US), and to read our documentation (https://docs.us.zip.co).
 
 ## Background
 
-One of the cornerstones of QuadPay's culture is openness and transparency. When reviewing our existing interview structure, we found that pair-programming challenges rarely replicated what our employees actually do in their day-to-day work. For example, when was the last time you coded without google, or when the requirements weren't clearly defined? To tackle that, we've decided to publish our pair programming interview and share it directly with candidates beforehand.
+One of the cornerstones of Zip's culture is openness and transparency. When reviewing our existing interview structure, we found that pair-programming challenges rarely replicated what our employees actually do in their day-to-day work. For example, when was the last time you coded without google, or when the requirements weren't clearly defined? To tackle that, we've decided to publish our pair programming interview and share it directly with candidates beforehand.
 
-As an Engineer at QuadPay you’ll help solve interesting problems on a daily basis. Some areas that you'll work on include fraud prevention, building real-time credit-decisioning models and, most importantly, shipping products that are secure, frictionless, and deliver a high-quality consumer experience.
+As an Engineer at Zip you’ll help solve interesting problems on a daily basis. Some areas that you'll work on include fraud prevention, building real-time credit-decisioning models and, most importantly, shipping products that are secure, frictionless, and deliver a high-quality consumer experience.
 
-The pair programming challenge will take an hour, and will more closely replicate a day-in-the-life at QuadPay. You’re free to use whichever resources help you to get the job done. When we evaluate your code at the end of the session, we will be looking for: 
+The pair programming challenge will take an hour, and will more closely replicate a day-in-the-life at Zip. You’re free to use whichever resources help you to get the job done. When we evaluate your code at the end of the session, we will be looking for: 
 - A high code health
 - Simplicity
 - Readability
@@ -30,7 +30,7 @@ During the interview, you will build a core service for our business, an Install
 #### Installment Calculator
 ##### User Story
 
-As a QuadPay Customer, I would like to establish a payment plan spread over 6 weeks that splits the original charge evenly over 4 installments.
+As a Zip Customer, I would like to establish a payment plan spread over 6 weeks that splits the original charge evenly over 4 installments.
 
 ##### Acceptance Criteria
 - Given it is the 1st of January, 2020
