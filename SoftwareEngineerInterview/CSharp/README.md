@@ -1,15 +1,25 @@
 # CSharp Project
 
 ## Requirements
-> Visual Studio Code
-> Dotnet SDK 3.1
+```
+Visual Studio Code
+Dotnet SDK 6.0
+```
 
 ## Install
-> TODO
+```
+cd Zip.InstallmentsService
+dotnet restore
+```
 
 ## Quick Start
-> TODO
+```
+cd Zip.InstallmentsService
+dotnet run
+```
 
 ## Run Tests
-> cd QuadPay.InstallmentsService
-> dotnet test QuadPay.InstallmentsService.sln
+```
+cd Zip.InstallmentsService
+dotnet test Zip.InstallmentsService.sln
+```
