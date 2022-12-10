@@ -12,5 +12,6 @@ namespace Zip.InstallmentsService
 		public decimal PurchaseAmount { get; set; }
 
         public Installment[] Installments { get; set; }
+
     }
 }

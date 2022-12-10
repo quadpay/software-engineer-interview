@@ -8,7 +8,10 @@
     <Folder Include="Cache\" />
     <Folder Include="Context\" />
     <Folder Include="Helper\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zip.InstallmentsService.Entity\Zip.InstallmentsService.Entity.csproj" />
   </ItemGroup>
 
 </Project>

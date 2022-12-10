@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Zip.InstallmentsService.Entity.Request;
+using Zip.InstallmentsService.Entity.Response;
 
 namespace Zip.InstallmentsService.Data.Interface
 {
-    internal class IPaymentPlanRepository
+    public interface IPaymentPlanRepository
     {
+        PaymentPlanResponseModel Create(PaymentPlanRequestModel requestModel);
+        PaymentPlanResponseModel Get(int id);
     }
 }
