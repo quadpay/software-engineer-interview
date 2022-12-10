@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zip.InstallmentsService.Data.Interface;
-using Zip.InstallmentsService.Data.Models;
 using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Helper;
 using Zip.InstallmentsService.Interface;
 
 namespace Zip.InstallmentsService.Implementation
@@ -22,36 +16,62 @@ namespace Zip.InstallmentsService.Implementation
         private readonly IInstallmentProvider _installmentProvider;
         private IMapper _mapper { get; }
 
+        /// <summary>
+        /// Intialization in Constructor
+        /// </summary>
+        /// <param name="paymentPlanRepository"></param>
+        /// <param name="installmentProvider"></param>
+        /// <param name="mapper"></param>
         public PaymentPlanProvider(IPaymentPlanRepository paymentPlanRepository, IInstallmentProvider installmentProvider, IMapper mapper)
         {
             _paymentPlanRepository = paymentPlanRepository;
             _installmentProvider = installmentProvider;
             _mapper = mapper;
         }
+        
+        /// <summary>
+        /// Get Payment plan by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PaymentPlanDto GetById(Guid id)
+        {
+            var response = _paymentPlanRepository.GetById(id);
+            return Mapper.Map<PaymentPlanDto>(response);
+        }
 
+        /// <summary>
+        /// Logic to create payment plan
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
         public PaymentPlanDto Create(PaymentPlanDto requestModel)
         {
             if (requestModel == null) return null;
 
+            //Calculate installments
             requestModel.Installments = _installmentProvider.CalculateInstallments(requestModel)?.ToList();
+
+            //Create Payment plan
             var response = _paymentPlanRepository.Create(requestModel);
 
             return Mapper.Map<PaymentPlanDto>(response);
         }
 
-        public PaymentPlanDto Get(int id)
-        {
-            var response = _paymentPlanRepository.Get(id);
-            return Mapper.Map<PaymentPlanDto>(response);
-        }
 
+        /// <summary>
+        /// Validate Payment plan create request
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
         public ValidateRequestDto ValidateCreateRequest(PaymentPlanDto requestModel)
         {
             var responemodel = new ValidateRequestDto();
             if(requestModel == null) responemodel.Message = "Bad Request.";
             else if (requestModel.NoOfInstallments == 0) responemodel.Message = "Please select no of installments.";
             else if (requestModel.FrequencyInDays == 0) responemodel.Message = "Please select frequency.";
-            else if (requestModel.FrequencyType == 0) responemodel.Message = "Please select frequency type.";
+            
+            responemodel.IsValid = true;
             return responemodel;
         }
 

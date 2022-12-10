@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Zip.InstallmentsService.Data.Models
 {
@@ -11,8 +10,8 @@ namespace Zip.InstallmentsService.Data.Models
         public decimal PurchaseAmount { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int NoOfInstallments { get; set; }
-        public int Frequency { get; set; }
-        public int FrequencyType { get; set; }
+        public int FrequencyInDays { get; set; }
+        //public int FrequencyType { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public Guid CreatedBy { get; set; }

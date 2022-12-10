@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Entity.Enum;
 
 namespace Zip.InstallmentsService.Entity.Dto
 {
@@ -17,7 +14,6 @@ namespace Zip.InstallmentsService.Entity.Dto
         public DateTime PurchaseDate { get; set; }
         public int NoOfInstallments { get; set; }
         public int FrequencyInDays { get; set; }
-        public PaymentPlanFrequencyTypeEnum FrequencyType { get; set; }
         public List<InstallmentDto> Installments { get; set; }
 
     }

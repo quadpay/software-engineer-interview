@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Data.Models;
 using Zip.InstallmentsService.Entity.Dto;
@@ -13,11 +11,31 @@ namespace Zip.InstallmentsService.Data.Repository
     {
         private readonly ApiContext _context;
 
+        /// <summary>
+        /// Intialization in Constructor 
+        /// </summary>
+        /// <param name="context"></param>
         public PaymentPlanRepository(ApiContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Database logic to get payment plan by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PaymentPlan GetById(Guid id)
+        {
+            var result = _context.PaymentPlans.Where(k => k.Id == id).Include(k => k.Installments)?.FirstOrDefault();
+            return result;
+        }
+
+        /// <summary>
+        /// Database logic to create payment plan
+        /// </summary>
+        /// <param name="_paymentPlan"></param>
+        /// <returns></returns>
         public PaymentPlan Create(PaymentPlanDto _paymentPlan)
         {
             var paymenPlan = new PaymentPlan
@@ -27,11 +45,13 @@ namespace Zip.InstallmentsService.Data.Repository
                 PurchaseAmount = _paymentPlan.PurchaseAmount,
                 PurchaseDate = _paymentPlan.PurchaseDate,
                 NoOfInstallments = _paymentPlan.NoOfInstallments,
-                Frequency = _paymentPlan.FrequencyInDays
+                FrequencyInDays = _paymentPlan.FrequencyInDays,
+                CreatedOn = DateTime.UtcNow,
+                CreatedBy = _paymentPlan.UserId
             };
             _context.PaymentPlans.Add(paymenPlan);
 
-            foreach (var item in paymenPlan.Installments)
+            foreach (var item in _paymentPlan.Installments)
             {
                 var installment = new Installment
                 {
@@ -49,9 +69,6 @@ namespace Zip.InstallmentsService.Data.Repository
             return paymenPlan;
         }
 
-        public PaymentPlan Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

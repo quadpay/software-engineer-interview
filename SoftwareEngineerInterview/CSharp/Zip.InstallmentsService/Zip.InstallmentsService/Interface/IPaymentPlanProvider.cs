@@ -11,7 +11,7 @@ namespace Zip.InstallmentsService.Interface
     {
         ValidateRequestDto ValidateCreateRequest(PaymentPlanDto requestModel);
         PaymentPlanDto Create(PaymentPlanDto requestModel);
-        PaymentPlanDto Get(int id);
+        PaymentPlanDto GetById(Guid id);
 
     }
 }

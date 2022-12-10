@@ -7,6 +7,6 @@ namespace Zip.InstallmentsService.Interface
 {
     public interface IInstallmentProvider
     {
-        IEnumerable<InstallmentDto>  CalculateInstallments(PaymentPlanDto requestModel);
+        List<InstallmentDto>  CalculateInstallments(PaymentPlanDto requestModel);
     }
 }

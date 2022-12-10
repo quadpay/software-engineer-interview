@@ -12,7 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Data.Models;
+using Zip.InstallmentsService.Data.Repository;
+using Zip.InstallmentsService.Implementation;
+using Zip.InstallmentsService.Interface;
 
 namespace Zip.InstallmentsService.Service
 {
@@ -32,7 +36,11 @@ namespace Zip.InstallmentsService.Service
             //services.AddMvc();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddControllers();
+            services.AddScoped<IPaymentPlanProvider, PaymentPlanProvider>();
+            services.AddScoped<IPaymentPlanRepository, PaymentPlanRepository>();
+            services.AddScoped<IInstallmentProvider, InstallmentProvider>();
+
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

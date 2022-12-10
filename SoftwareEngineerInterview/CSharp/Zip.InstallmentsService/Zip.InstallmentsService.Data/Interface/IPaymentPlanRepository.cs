@@ -10,6 +10,6 @@ namespace Zip.InstallmentsService.Data.Interface
     public interface IPaymentPlanRepository
     {
         PaymentPlan Create(PaymentPlanDto requestModel);
-        PaymentPlan Get(int id);
+        PaymentPlan GetById(Guid id);
     }
 }
