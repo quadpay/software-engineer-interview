@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latestmajor</LangVersion>
+    <RootNamespace>Zip.InstallmentsService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="Helper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zip.InstallmentsService.Data\Zip.InstallmentsService.Data.csproj" />
+    <ProjectReference Include="..\Zip.InstallmentsService.Entity\Zip.InstallmentsService.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

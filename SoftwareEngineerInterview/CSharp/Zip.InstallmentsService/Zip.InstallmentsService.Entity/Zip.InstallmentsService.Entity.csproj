@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Extension\" />
+  </ItemGroup>
+
 </Project>
