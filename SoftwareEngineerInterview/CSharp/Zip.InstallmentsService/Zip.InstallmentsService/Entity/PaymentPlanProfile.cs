@@ -5,7 +5,7 @@ using Zip.InstallmentsService.Entity.Dto;
 namespace Zip.InstallmentsService.Entity
 {
     /// <summary>
-    /// Created profiles for AutoMapper of entities
+    /// Created profiles for AutoMapper (Mapping of objects) of entities
     /// </summary>
     public class PaymentPlanProfile : Profile
     {

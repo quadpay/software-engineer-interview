@@ -47,7 +47,9 @@ namespace Zip.InstallmentsService.Implementation
         /// <returns></returns>
         public PaymentPlanDto Create(CreatePaymentPlanDto requestModel)
         {
-            if (requestModel == null) return null;
+            //Validate request
+            var validateRequest = this.ValidateCreateRequest(requestModel);
+            if (!validateRequest.IsValid) return null;
 
             //convert via AutoMapper
             var paymentPlanDto = Mapper.Map<PaymentPlanDto>(requestModel);

@@ -6,6 +6,7 @@
    2) Zip.InstallmentsService.Core (Bussiness layer + AutoMapper)
    3) Zip.InstallmentsService.Data (Data Access layer)
    4) Zip.InstallmentsService.Entity (Dto and request/response objects)
+   5) Zip.InstallmentsService.Core.Test (This is for test cases)
 
 ## Testing steps or details
 Now to test this API please find below steps
