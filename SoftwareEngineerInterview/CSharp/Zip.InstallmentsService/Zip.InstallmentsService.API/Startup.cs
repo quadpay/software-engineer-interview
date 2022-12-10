@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Data.Models;
 using Zip.InstallmentsService.Data.Repository;
+using Zip.InstallmentsService.Entity.Dto;
 using Zip.InstallmentsService.Implementation;
 using Zip.InstallmentsService.Interface;
 
@@ -47,6 +48,19 @@ namespace Zip.InstallmentsService.Service
                     Description = "A simple example to Implement Swagger UI",
                 });
             });
+
+            //Logging
+            var serviceProvider = services.BuildServiceProvider();
+            var logger = serviceProvider.GetService<ILogger<ApplicationLogs>>();
+            services.AddSingleton(typeof(ILogger), logger);
+
+            //services.AddLogging(config =>
+            //{
+            //    config.AddDebug();
+            //    config.AddConsole();
+            //});
+
+            services.AddApplicationInsightsTelemetry();
 
             services.AddScoped<IPaymentPlanProvider, PaymentPlanProvider>();
             services.AddScoped<IPaymentPlanRepository, PaymentPlanRepository>();

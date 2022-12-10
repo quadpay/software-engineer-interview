@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using Zip.InstallmentsService.Entity.Dto;
 using Zip.InstallmentsService.Interface;
@@ -15,14 +16,17 @@ namespace Zip.InstallmentsService.API.Controllers
     {
 
         private readonly IPaymentPlanProvider _paymentPlanProvider;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Intialization in Constructor
         /// </summary>
         /// <param name="paymentPlanProvider"></param>
-        public PaymentPlanController(IPaymentPlanProvider paymentPlanProvider)
+        /// <param name="_logger"></param>
+        public PaymentPlanController(IPaymentPlanProvider paymentPlanProvider, ILogger logger)
         {
             _paymentPlanProvider = paymentPlanProvider;
+            _logger = logger;
         }
 
         /// <summary>
@@ -47,6 +51,7 @@ namespace Zip.InstallmentsService.API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
@@ -88,6 +93,7 @@ namespace Zip.InstallmentsService.API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
