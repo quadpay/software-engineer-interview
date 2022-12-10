@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Data.Models;
@@ -51,7 +52,7 @@ namespace Zip.InstallmentsService.Data.Repository
             };
             _context.PaymentPlans.Add(paymenPlan);
 
-            foreach (var item in _paymentPlan.Installments)
+            foreach (var item in _paymentPlan?.Installments)
             {
                 var installment = new Installment
                 {

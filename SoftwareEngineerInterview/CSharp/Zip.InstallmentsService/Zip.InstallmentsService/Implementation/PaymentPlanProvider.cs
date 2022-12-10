@@ -45,15 +45,18 @@ namespace Zip.InstallmentsService.Implementation
         /// </summary>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        public PaymentPlanDto Create(PaymentPlanDto requestModel)
+        public PaymentPlanDto Create(CreatePaymentPlanDto requestModel)
         {
             if (requestModel == null) return null;
 
+            //convert via AutoMapper
+            var paymentPlanDto = Mapper.Map<PaymentPlanDto>(requestModel);
+
             //Calculate installments
-            requestModel.Installments = _installmentProvider.CalculateInstallments(requestModel)?.ToList();
+            paymentPlanDto.Installments = _installmentProvider.CalculateInstallments(paymentPlanDto)?.ToList();
 
             //Create Payment plan
-            var response = _paymentPlanRepository.Create(requestModel);
+            var response = _paymentPlanRepository.Create(paymentPlanDto);
 
             return Mapper.Map<PaymentPlanDto>(response);
         }
@@ -64,7 +67,7 @@ namespace Zip.InstallmentsService.Implementation
         /// </summary>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        public ValidateRequestDto ValidateCreateRequest(PaymentPlanDto requestModel)
+        public ValidateRequestDto ValidateCreateRequest(CreatePaymentPlanDto requestModel)
         {
             var responemodel = new ValidateRequestDto();
             if(requestModel == null) responemodel.Message = "Bad Request.";

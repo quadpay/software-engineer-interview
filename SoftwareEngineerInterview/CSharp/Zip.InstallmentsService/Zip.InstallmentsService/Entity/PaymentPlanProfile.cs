@@ -11,6 +11,8 @@ namespace Zip.InstallmentsService.Entity
     {
         public PaymentPlanProfile()
         {
+            
+            CreateMap<CreatePaymentPlanDto, PaymentPlanDto>();
             CreateMap<PaymentPlan, PaymentPlanDto>();
             CreateMap<Installment, InstallmentDto>();
         }
