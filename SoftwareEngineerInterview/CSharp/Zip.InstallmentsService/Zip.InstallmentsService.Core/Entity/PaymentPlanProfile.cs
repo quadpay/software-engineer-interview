@@ -2,7 +2,7 @@
 using Zip.InstallmentsService.Data.Models;
 using Zip.InstallmentsService.Entity.Dto;
 
-namespace Zip.InstallmentsService.Entity
+namespace Zip.InstallmentsService.Core.Entity
 {
     /// <summary>
     /// Created profiles for AutoMapper (Mapping of objects) of entities

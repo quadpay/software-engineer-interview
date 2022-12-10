@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Zip.InstallmentsService.Data.Interface;
-using Zip.InstallmentsService.Interface;
+using Zip.InstallmentsService.Core.Interface;
 
 namespace Zip.InstallmentsService.Core.Test
 {

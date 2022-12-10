@@ -3,9 +3,9 @@ using System;
 using System.Linq;
 using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Interface;
+using Zip.InstallmentsService.Core.Interface;
 
-namespace Zip.InstallmentsService.Implementation
+namespace Zip.InstallmentsService.Core.Implementation
 {
     /// <summary>
     /// Core class which defines all bussiness logic for a payment plan.

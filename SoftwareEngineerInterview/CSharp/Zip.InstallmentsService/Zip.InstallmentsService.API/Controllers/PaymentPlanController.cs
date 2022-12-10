@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Interface;
+using Zip.InstallmentsService.Core.Interface;
 
 namespace Zip.InstallmentsService.API.Controllers
 {

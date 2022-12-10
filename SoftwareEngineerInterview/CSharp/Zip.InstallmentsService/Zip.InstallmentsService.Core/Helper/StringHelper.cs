@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zip.InstallmentsService.Helper
+namespace Zip.InstallmentsService.Core.Helper
 {
     public  static class StringHelper
     {

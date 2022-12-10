@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Helper;
-using Zip.InstallmentsService.Interface;
+using Zip.InstallmentsService.Core.Helper;
+using Zip.InstallmentsService.Core.Interface;
 
-namespace Zip.InstallmentsService.Implementation
+namespace Zip.InstallmentsService.Core.Implementation
 {
     public class InstallmentProvider : IInstallmentProvider
     {

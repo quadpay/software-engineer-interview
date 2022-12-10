@@ -7,8 +7,8 @@ using Zip.InstallmentsService.Data.Interface;
 using Zip.InstallmentsService.Data.Models;
 using Zip.InstallmentsService.Data.Repository;
 using Zip.InstallmentsService.Entity.Dto;
-using Zip.InstallmentsService.Implementation;
-using Zip.InstallmentsService.Interface;
+using Zip.InstallmentsService.Core.Implementation;
+using Zip.InstallmentsService.Core.Interface;
 
 namespace Zip.InstallmentsService.Core.Test
 {

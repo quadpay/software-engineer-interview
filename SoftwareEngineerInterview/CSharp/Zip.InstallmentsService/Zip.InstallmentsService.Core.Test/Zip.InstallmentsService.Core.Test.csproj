@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Zip.InstallmentsService.Core\Zip.InstallmentsService.Core.csproj" />
     <ProjectReference Include="..\Zip.InstallmentsService.Entity\Zip.InstallmentsService.Entity.csproj" />
-    <ProjectReference Include="..\Zip.InstallmentsService\Zip.InstallmentsService.Core.csproj" />
   </ItemGroup>
 
 </Project>

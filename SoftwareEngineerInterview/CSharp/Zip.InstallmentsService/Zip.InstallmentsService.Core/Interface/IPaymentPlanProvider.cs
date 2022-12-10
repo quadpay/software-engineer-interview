@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zip.InstallmentsService.Entity.Dto;
 
-namespace Zip.InstallmentsService.Interface
+namespace Zip.InstallmentsService.Core.Interface
 {
     public interface IPaymentPlanProvider
     {
