@@ -60,7 +60,7 @@ namespace Zip.InstallmentsService.API.Controllers
         /// <returns></returns>
         [HttpPost]
         //[Authorize]
-        [Route("api/PaymentPlan/Create")]
+        [Route("api/PaymentPlan")]
         public ActionResult<PaymentPlanDto> Create(PaymentPlanDto _requestModel)
         {
             try

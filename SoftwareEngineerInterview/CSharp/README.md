@@ -1,9 +1,10 @@
 # CSharp Project
 
+
 ## Requirements
 ```
-Visual Studio Code
-Dotnet SDK 6.0
+Microsoft Visual Studio Community 2022 (64-bit) > Version 17.4.2
+.Net Core 3.1 (LTS)
 ```
 
 ## Install
