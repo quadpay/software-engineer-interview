@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33122.133
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Core", "Zip.InstallmentsService\Zip.InstallmentsService.Core.csproj", "{E7F1FB5D-5D7B-49D1-8F44-C31B60A7E1DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Core", "Zip.InstallmentsService.Core\Zip.InstallmentsService.Core.csproj", "{E7F1FB5D-5D7B-49D1-8F44-C31B60A7E1DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.API", "Zip.InstallmentsService.API\Zip.InstallmentsService.API.csproj", "{93B4342A-AB28-4D6C-AF68-3159FD487564}"
 EndProject
@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Entity", "Zip.InstallmentsService.Entity\Zip.InstallmentsService.Entity.csproj", "{F56A2C2F-5269-4F9B-956C-E61958E80701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.InstallmentsService.Core.Test", "Zip.InstallmentsService.Core.Test\Zip.InstallmentsService.Core.Test.csproj", "{F09D6C6A-EF22-4332-8063-848321B47825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Core.Test", "Zip.InstallmentsService.Core.Test\Zip.InstallmentsService.Core.Test.csproj", "{F09D6C6A-EF22-4332-8063-848321B47825}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

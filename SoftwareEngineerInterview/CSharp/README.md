@@ -1,6 +1,7 @@
 # CSharp Project
 - This API supports .net core 3.1 (LTS) and created from Visual studio 2022.
-- This includes Depandency injection, repository pattern, SOLID principles, EF In Memory database, automapper, swagger, Azure Application insight for Exception handling.
+- This includes Depandency injection, repository pattern, SOLID principles, EF In Memory database, automapper, swagger, Azure Application insight for Exception handling (Need to add application telementry key for make it work).
+	
 - There are basically 3 main layers or project solutions
    1) Zip.InstallmentsService.API (API controllers)
    2) Zip.InstallmentsService.Core (Bussiness layer + AutoMapper)
@@ -29,7 +30,7 @@ dotnet run
 ## Run Tests
 ```
 cd Zip.InstallmentsService
-dotnet test Zip.InstallmentsService.sln
+dotnet test Zip.InstallmentsService.Core.Test.sln
 ```
 
 ## Testing steps or details
