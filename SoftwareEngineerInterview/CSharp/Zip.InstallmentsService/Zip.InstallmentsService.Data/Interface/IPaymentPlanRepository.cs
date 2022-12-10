@@ -8,7 +8,7 @@ namespace Zip.InstallmentsService.Data.Interface
 {
     public interface IPaymentPlanRepository
     {
-        PaymentPlanResponseModel Create(PaymentPlanRequestModel requestModel);
+        PaymentPlanResponseModel Create(CreatePaymentPlanRequestModel requestModel);
         PaymentPlanResponseModel Get(int id);
     }
 }

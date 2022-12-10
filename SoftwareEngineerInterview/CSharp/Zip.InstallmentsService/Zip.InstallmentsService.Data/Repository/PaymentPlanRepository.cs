@@ -10,7 +10,7 @@ namespace Zip.InstallmentsService.Data.Repository
 {
     public class PaymentPlanRepository : IPaymentPlanRepository
     {
-        public PaymentPlanResponseModel Create(PaymentPlanRequestModel requestModel)
+        public PaymentPlanResponseModel Create(CreatePaymentPlanRequestModel requestModel)
         {
             var result = new PaymentPlanDbViewModel();
 

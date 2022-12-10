@@ -7,6 +7,8 @@ using Zip.InstallmentsService.Entity.Request;
 using Zip.InstallmentsService.Entity.Response;
 using Zip.InstallmentsService.Interface;
 using Zip.InstallmentsService.Data.Interface;
+using Microsoft.VisualBasic;
+using Zip.InstallmentsService.Implementation;
 
 namespace Zip.InstallmentsService.API.Controllers
 {
@@ -29,6 +31,17 @@ namespace Zip.InstallmentsService.API.Controllers
         {
             try
             {
+                if (_requestModel.PurchaseDate == DateTime.MinValue) 
+                    _requestModel.PurchaseDate = DateTime.UtcNow;
+
+                //Validate Request
+                var validRequestViewModel = _paymentPlanProvider.ValidatePaymentPlanCreateRequest(_requestModel);
+                if (!validRequestViewModel.IsValid)
+                {
+                    return BadRequest(validRequestViewModel.Message);
+                }
+
+                //Create Plan
                 var result = _paymentPlanProvider.Create(_requestModel);
                 if (result == null)
                 {

@@ -10,7 +10,8 @@ namespace Zip.InstallmentsService.Interface
 {
     public interface IPaymentPlanProvider
     {
-        PaymentPlanResponseModel Create(PaymentPlanRequestModel requestModel);
+        ValidateResponseModel ValidatePaymentPlanCreateRequest(CreatePaymentPlanRequestModel requestModel);
+        PaymentPlanResponseModel Create(CreatePaymentPlanRequestModel requestModel);
         PaymentPlanResponseModel Get(int id);
 
     }

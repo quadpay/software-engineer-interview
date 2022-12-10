@@ -22,7 +22,7 @@ namespace Zip.InstallmentsService.Implementation
             _paymentPlanRepository = paymentPlanRepository;
         }
 
-        public PaymentPlanResponseModel Create(PaymentPlanRequestModel requestModel)
+        public PaymentPlanResponseModel Create(CreatePaymentPlanRequestModel requestModel)
         {
             return _paymentPlanRepository.Create(requestModel);
         }
@@ -31,5 +31,24 @@ namespace Zip.InstallmentsService.Implementation
         {
             return _paymentPlanRepository.Get(id);
         }
+
+        public ValidateResponseModel ValidatePaymentPlanCreateRequest(CreatePaymentPlanRequestModel requestModel)
+        {
+            var responemodel = new ValidateResponseModel();
+            if (requestModel.NoOfInstallments == 0) responemodel.Message = "Please select no of installments.";
+            else if (requestModel.Frequency == 0) responemodel.Message = "Please select frequency.";
+            else if (requestModel.FrequencyType == 0) responemodel.Message = "Please select frequency type.";
+            return responemodel;
+        }
+
+
+
+        private void CalculatePaymentPlan(CreatePaymentPlanRequestModel requestModel)
+        { 
+        
+        
+        }
+
+
     }
 }
