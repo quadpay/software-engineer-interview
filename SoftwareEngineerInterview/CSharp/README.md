@@ -8,14 +8,6 @@
    4) Zip.InstallmentsService.Entity (Dto and request/response objects)
    5) Zip.InstallmentsService.Core.Test (This is for test cases)
 
-## Testing steps or details
-Now to test this API please find below steps
-- Make sure Zip.InstallmentsService.API is set as a start project
-- Run the project from visual studio 2022 and it shuld open swagger UI page (https://localhost:44336/swagger/index.html)
-- Now here you will see 2 api one is to create payment plan (HttpPOST) and one is to get payment plan by PaymentPlanId (HttpGet)
-- So you can click on 'Try it out' button and provide input and test it there on swagger UI itself.
-
-
 ## Requirements
 ```
 Microsoft Visual Studio Community 2022 (64-bit) > Version 17.4.2
@@ -39,3 +31,25 @@ dotnet run
 cd Zip.InstallmentsService
 dotnet test Zip.InstallmentsService.sln
 ```
+
+## Testing steps or details
+Now to test this API please find below steps
+- Make sure Zip.InstallmentsService.API is set as a start project
+- Run the project from visual studio 2022 and it shuld open swagger UI page (https://localhost:44336/swagger/index.html)
+- Now here you will see 2 api one is to create payment plan (HttpPOST) and one is to get payment plan by PaymentPlanId (HttpGet)
+- So you can click on 'Try it out' button and provide input and test it there on swagger UI itself.
+  
+  OR 
+- if you wish to test it via PostMan you can test it via postman as well.
+  1) HttpPost > https://localhost:44336/api/PaymentPlan
+	Body > 
+	{
+		"userId": "504A683D-B4C3-4770-962B-4B5F3F89BB91",
+		"purchaseAmount": "100.00",
+		"purchaseDate":"2022-01-01",
+		"noOfInstallments":"4",
+		"frequencyInDays":"14"
+	}
+
+  2) HttpGet > https://localhost:44336/api/PaymentPlan/{PaymentPlanId}
+  Note: PaymentPlanId is the one which is creted from point1
