@@ -1,4 +1,6 @@
 # CSharp Project
+This API supports .net core 3.1 (LTS) and created from Visual studio 2022.
+This includes Depandency injection, repository pattern, SOLID principles, usage of automapper and swagger UI for testing.
 
 
 ## Requirements
