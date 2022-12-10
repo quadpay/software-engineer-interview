@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zip.InstallmentsService.Data.Models
+namespace Zip.InstallmentsService.Helper
 {
-    public class ResponseDbViewModel
+    public  static class StringHelper
     {
-
+       
     }
 }

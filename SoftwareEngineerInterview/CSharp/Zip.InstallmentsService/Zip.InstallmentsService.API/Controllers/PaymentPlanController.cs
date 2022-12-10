@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
-using Zip.InstallmentsService.Entity.Request;
-using Zip.InstallmentsService.Entity.Response;
+using Zip.InstallmentsService.Entity.Dto;
 using Zip.InstallmentsService.Interface;
 using Zip.InstallmentsService.Data.Interface;
 using Microsoft.VisualBasic;
@@ -27,7 +26,7 @@ namespace Zip.InstallmentsService.API.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public ActionResult<PaymentPlanResponseModel> Create(CreatePaymentPlanRequestModel _requestModel)
+        public ActionResult<PaymentPlanDto> Create(PaymentPlanDto _requestModel)
         {
             try
             {
@@ -35,7 +34,7 @@ namespace Zip.InstallmentsService.API.Controllers
                     _requestModel.PurchaseDate = DateTime.UtcNow;
 
                 //Validate Request
-                var validRequestViewModel = _paymentPlanProvider.ValidatePaymentPlanCreateRequest(_requestModel);
+                var validRequestViewModel = _paymentPlanProvider.ValidateCreateRequest(_requestModel);
                 if (!validRequestViewModel.IsValid)
                 {
                     return BadRequest(validRequestViewModel.Message);
@@ -45,7 +44,7 @@ namespace Zip.InstallmentsService.API.Controllers
                 var result = _paymentPlanProvider.Create(_requestModel);
                 if (result == null)
                 {
-                    return NotFound(new PaymentPlanResponseModel());
+                    return NotFound(new PaymentPlanDto());
                 }
 
                 return Ok(result);
