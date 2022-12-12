@@ -1,10 +1,11 @@
 # CSharp Project
 - This API supports .net core 3.1 (LTS) and created from Visual studio 2022.
-- This includes Depandency injection, repository pattern, SOLID principles, EF In Memory database, automapper, swagger, 
-	Azure Application insight for Exception handling (Need to add application telementry key for make it work),
+- This includes Depandency injection, repository pattern, SOLID principles, EF In Memory database, automapper, swagger, Enabled global cors policy (We can customise as per need),
+	Azure Application insight for Exception handling (Need to add application telementry key for make it work)
 	JWT Authentication (Logic added fully now to make it work we need to have separte auth api which whould generate token and same token will be validated in this api if we uncomment some 
-	code like Authorise attribute and UseAuthentication in startup file)
-	
+	code like Authorise attribute and UseAuthentication in startup file),
+	//ToDo or good to have : Move all exception handling logic to custom or global middleware
+
 - There are basically 3 main layers or project solutions
    1) Zip.InstallmentsService.API (API controllers)
    2) Zip.InstallmentsService.Core (Bussiness layer + AutoMapper)

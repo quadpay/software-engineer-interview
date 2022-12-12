@@ -116,6 +116,13 @@ namespace Zip.InstallmentsService.Service
 
             app.UseRouting();
 
+            // global cors policy
+            app.UseCors(x => x
+                .SetIsOriginAllowed(origin => true)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+
             //app.UseAuthentication(); // UnComment for JWT token based authentication
             app.UseAuthorization();
 
