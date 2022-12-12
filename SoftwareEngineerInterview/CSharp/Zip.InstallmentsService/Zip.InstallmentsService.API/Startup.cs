@@ -116,6 +116,7 @@ namespace Zip.InstallmentsService.Service
 
             app.UseRouting();
 
+            //app.UseAuthentication(); // UnComment for JWT token based authentication
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -31,6 +31,7 @@ namespace Zip.InstallmentsService.API.Controllers
 
         /// <summary>
         /// Api to get payment plan along with installment by id
+        ///  UnComment or add Authorize for JWT token based authentication
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -60,11 +61,12 @@ namespace Zip.InstallmentsService.API.Controllers
 
         /// <summary>
         /// Api to create payment plan intallments
+        ///  UnComment or add Authorize for JWT token based authentication
         /// </summary>
         /// <param name="_requestModel"></param>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        //[Authorize] 
         [Route("api/PaymentPlan")]
         public ActionResult<PaymentPlanDto> Create(CreatePaymentPlanDto _requestModel)
         {
