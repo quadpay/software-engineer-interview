@@ -5,6 +5,7 @@ namespace Zip.InstallmentsService.Test
 {
     public class PaymentPlanFactoryTests
     {
+
         [Fact]
         public void WhenCreatePaymentPlanWithValidOrderAmount_ShouldReturnValidPaymentPlan()
         {
