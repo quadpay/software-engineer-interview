@@ -1,0 +1,17 @@
+global using AutoMapper;
+global using FluentValidation.TestHelper;
+global using MediatR;
+global using Microsoft.Extensions.Logging;
+global using MockQueryable.FakeItEasy;
+global using Moq;
+global using System.Linq.Expressions;
+global using Xunit;
+global using Zip.InstallmentsService.ApiContracts;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate.Command;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate.Handler;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate.MapperProfiles;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate.Queries;
+global using Zip.InstallmentsService.Core.PaymentPlanAggregate.Validation;
+global using Zip.InstallmentsService.SharedKarnel.Interfaces;
+global using Zip.InstallmentsService.Web.Controllers;

@@ -1,5 +1,232 @@
 # Zip Software Engineer Interview
 
+## Design:
+- This system is designed using clean architecture. Below are the sub-component of this application.
+- #### 1. Zip.InstallmentsService.SharedKarnel: 
+  This is project contains defination for base model and couple of important interfaces.
+- #### 2. Zip.InstallmentsService.ApiContracts: 
+  This is project contains defination for api models which are used in request and responses.
+- #### 3. Zip.InstallmentsService.Core: 
+  This is project contains core buisness logic which is resposible for creating payment plan.
+- #### 4. Zip.InstallmentsService.Infrastructure: 
+  This is project contains logic for connecting with databases and performing CURD operation on DB.
+- #### 5. Zip.InstallmentsService.Api: 
+  This is project contains logic for payment plan api.
+
+## Assumption:
+1. Minimum value for purchase amount will be $ 1.
+2. Min value for number of installments is 1.
+3. Min value for frequency is 1.
+4. Purhcase date shold not be null or default.
+
+## Api details:
+#### 1. Create Payment Plan
+
+| Request Url | https://localhost:5001/api/v1/PaymentPlan |
+| :--- | :--- |
+| Request Type | Post |
+| Request headers | 1. accept:application/json <br/> 2. Content-Type=application/json; Version=1.0 |
+##### Sample Request Body
+```json
+{
+    "purchaseAmount": 100,
+    "purhcaseDate": "2022-12-08T09:56:51.958Z",
+    "numberOfInstallments": 4,
+    "frequency": 14
+}
+```
+##### Sample Response Body
+```json
+{
+    "paymentPlanId": "ef148f64-da1d-4d18-9abe-6a1c9b9e2bd7",
+    "purchaseAmount": 100,
+    "installments": [
+        {
+            "installmentId": "17cfdc50-ad86-46fc-bb4a-e9677f6d1616",
+            "dueDate": "Dec 08, 2022",
+            "amount": 25
+        },
+        {
+            "installmentId": "64cd8b3d-d9b5-49ba-91d3-0b35ca08f2f5",
+            "dueDate": "Dec 22, 2022",
+            "amount": 25
+        },
+        {
+            "installmentId": "eb49d6f3-f4b0-42d4-bb30-a32f83f91dd3",
+            "dueDate": "Jan 05, 2023",
+            "amount": 25
+        },
+        {
+            "installmentId": "a03cef75-4c94-4b1e-a781-f1167a81b3c6",
+            "dueDate": "Jan 19, 2023",
+            "amount": 25
+        }
+    ]
+}
+```
+##### Parameter Details
+| Parameter | Data Type | Comment|
+| :--- | :--- |:--- |
+| purchaseAmount | Decimal | Purchase amount|
+| purhcaseDate | Datetime | Purchase date|
+| numberOfInstallments | int | Number of installments|
+| frequency | int | frequency for installments|
+
+##### Curl Request
+```
+curl --location --request POST 'https://localhost:5001/api/v1/PaymentPlan' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json; Version=1.0' \
+--data-raw '{
+    "purchaseAmount": 100,
+    "purhcaseDate": "2022-12-08T09:56:51.958Z",
+    "numberOfInstallments": 4,
+    "frequency": 14
+}'
+```
+
+### 2. Get Payment Plan by Id
+| Request Url | https://localhost:5001/api/v1/PaymentPlan/id/{{PaymentPlanId}} |
+| :--- | :--- |
+| Request Type | Get |
+| Request headers | 1. accept:application/json |
+##### Sample Response Body
+```json
+{
+    "paymentPlanId": "ef148f64-da1d-4d18-9abe-6a1c9b9e2bd7",
+    "purchaseAmount": 100,
+    "installments": [
+        {
+            "installmentId": "17cfdc50-ad86-46fc-bb4a-e9677f6d1616",
+            "dueDate": "Dec 08, 2022",
+            "amount": 25
+        },
+        {
+            "installmentId": "64cd8b3d-d9b5-49ba-91d3-0b35ca08f2f5",
+            "dueDate": "Dec 22, 2022",
+            "amount": 25
+        },
+        {
+            "installmentId": "eb49d6f3-f4b0-42d4-bb30-a32f83f91dd3",
+            "dueDate": "Jan 05, 2023",
+            "amount": 25
+        },
+        {
+            "installmentId": "a03cef75-4c94-4b1e-a781-f1167a81b3c6",
+            "dueDate": "Jan 19, 2023",
+            "amount": 25
+        }
+    ]
+}
+```
+
+##### Parameter Details
+| Url Parameter | Data Type | Comment|
+| :--- | :--- |:--- |
+| PaymentPlanId | Guid | Payment plan id|
+
+##### Curl Request
+```
+curl --location --request GET 'https://localhost:5001/api/v1/PaymentPlan/id/b3b157c7-5d30-48c0-8f69-34472cfacaa1' \
+--header 'accept: application/json'
+```
+
+## Prerequisite To Run Code:
+1. VS 2022
+2. .Net 5 SDK
+3.  Postman
+
+ ## How to run code in VS 2022?
+- Download or clone code from this repo.
+- Open VS 2022.
+- Browse solution file from cloned folder.
+- Set Zip.InstallmentsService.Api as startup project.
+- Validate Serilog in appsettings.json. It should be as below
+    ```
+    "Serilog": 
+    {
+      "MinimumLevel": 
+      {
+        "Default": "Information",
+        "Microsoft": "Information",
+        "Microsoft.Hosting.Lifetime": "Information"
+	    },
+	  "Using": ["Serilog.Sinks.Console", "Serilog.Sinks.File"],
+	  "WriteTo":[{
+            "Name": "Console"
+        },
+        {
+          "Name": "File",
+          "Args":
+          {
+            "path": "./bin/logs/log.txt",
+            "rollingInterval": "Day"
+          }
+        }
+      ]
+    }
+    ```
+- Once everything looks fine, Run project.
+- System will open swagger in browser window.
+- Click on Post request for /api/v1/PaymentPlan
+- System will expand the tab.
+- In tab, click on Try it out button.
+- Compose request body as below and click on execute button.
+```
+{
+    "purchaseAmount": 100,
+    "purhcaseDate": "2022-12-08T09:56:51.958Z",
+    "numberOfInstallments": 4,
+    "frequency": 14
+}
+```
+- In case of success, system will response as below.
+  ![image](https://user-images.githubusercontent.com/120372002/207064997-ca147283-6034-40be-b137-58546da33594.png)
+   
+## Running Unit Test Cases:
+- In VS 2022, Click View --> select Test Explorer
+- System will open window as below
+![image](https://user-images.githubusercontent.com/120372002/207065342-7abc1e95-d62b-409e-9b19-fd1508237cab.png)
+- Right click on Zip.InstallmentsService.UnitTests and select run.
+
+## Running Integration Tests:
+- Open postman.
+- Click on import in top left hand side. It opens below pop-up window
+![image](https://user-images.githubusercontent.com/120372002/207066427-fb2b71db-ec7f-4d5f-ad0f-e57616ebd523.png)
+- Click on choose file and select file Zip.InstallmentsService.IntegrationTests.postman_collection from Zip.InstallmentsService\Zip.InstallmentsService.IntegrationTests location.
+- System will show below screen. Click on import
+![image](https://user-images.githubusercontent.com/120372002/207066903-6ec5d29b-bdab-4479-8d58-dc4c9c5a96b3.png)
+- Once collection is imported --> Right click on collection and click on Run collection.
+![image](https://user-images.githubusercontent.com/120372002/207067387-d89c58e2-b5d6-4790-a675-0f73e6e39cbc.png)
+- Click on Run PaymentPlan button.
+- System will run the integration test and show results as below.
+![image](https://user-images.githubusercontent.com/120372002/207067773-fdb174b3-9148-43d0-af7c-374b69b9cdfd.png)
+
+## Techonology and Nugets used:
+1. Net 6
+2. AutoMapper.Extensions.Microsoft.DependencyInjection
+3. FluentValidation.AspNetCore
+4. Hellang.Middleware.ProblemDetails
+5. MediatR
+6. MediatR.Extensions.Microsoft.DependencyInjection
+7. Microsoft.AspNetCore.Mvc.Versioning
+8. Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
+9. Microsoft.EntityFrameworkCore.InMemory
+10. Microsoft.Extensions.Configuration.Abstractions
+11. Microsoft.Extensions.DependencyInjection.Abstractions
+12. Serilog.AspNetCore
+13. Serilog.Sinks.Console
+14. Serilog.Sinks.File
+15. Swashbuckle.AspNetCore
+16. Microsoft.Extensions.Logging.Abstractions
+17. Microsoft.NET.Test.Sdk" Version
+18. MockQueryable.FakeItEasy
+19. Moq
+20. Shouldly
+21. xunit
+
+### Note: Below is the problem statement.
+
 ## Overview
 
 Zip is a payment gateway that lets consumers split purchases into 4 interest free installments, every two weeks. The first 25% is taken when the purchase is made, and the remaining 3 installments of 25% are automatically taken every 14 days. We help customers manage their cash-flow while helping merchants increase conversion rates and average order values.
@@ -42,26 +269,3 @@ As a Zip Customer, I would like to establish a payment plan spread over 6 weeks 
   - `01/15/2020   -   $25.00`
   - `01/29/2020   -   $25.00`
   - `02/12/2020   -   $25.00`
-
-## The System Design Interview
-
-### Tools
-
-For the system design interview, you are free to choose whatever tool you'd like. Our default is [Google Jamboard](https://edu.google.com/products/jamboard/?modal_active=none). If you have no preference on what tool you'd like to use, we recommend playing around with the jamboard a bit beforehand to learn the tips and tricks. Most interviewers find it's easier to use the stickynotes or textbox functions with drawn lines/arrows linking them together. If you prefer pen and paper or a whiteboard and marker, that's totally fine, just make sure your interviewer is able to see them every now and then if you're remote.
-
-### Resources
-
-There is absolutely no expectation for you to buy any books or online courses beforehand. Some of the following are links to resources that upsell to a paid course, but the free content should be good enough:
-
-- [Grokking the System Design Interview - Build a URL Shortener](https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR)
-- [System Design at Google](https://www.quora.com/What-is-the-system-design-interview-at-Google-like-for-a-SWE-position)
-
-While we won't give you the exact prompt ahead of time, our general recommendation for all of our system design interviews is to:
-
-- Ask questions
-- Think about scalability
-- Don't be afraid to completely change your design halfway through
-
-## Closing Thoughts
-
-We very much look forward to meeting you. Our goal is to make interviewers feel comfortable and prepared, so always feel free to reach out to your recruiter if you have any questions. Afterward, we welcome any and all feedback. We're constantly iterating and improving this process, and anything you share will help us make our interviews better for future candidates.

@@ -1,0 +1,796 @@
+{
+	"info": {
+		"_postman_id": "8938c897-3c19-456a-875b-433a7e146a27",
+		"name": "PaymentPlan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2305723"
+	},
+	"item": [
+		{
+			"name": "CreatePaymentPlan-Successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status is created\r",
+							"pm.test(\"CreatePaymentPlan - Creates payment plan successfully\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"paymentPlanId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"purchaseAmount\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"installments\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"paymentPlanId\",\r",
+							"    \"purchaseAmount\",\r",
+							"    \"installments\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('CreatePaymentPlan - Generates correct schema', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.collectionVariables.set(\"PaymentPlanId\", jsonResponse.paymentPlanId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; Version=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseAmount\": 100,\n    \"purhcaseDate\": \"2022-12-08T09:56:51.958Z\",\n    \"numberOfInstallments\": 4,\n    \"frequency\": 14\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePaymentPlan-PurchaseAmount validation error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status is bad request\r",
+							"pm.test(\"CreatePaymentPlan - PurchaseAmount validator produced bad request response.\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"traceId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"errors\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"PurchaseAmount\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          ]\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"PurchaseAmount\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"type\",\r",
+							"    \"title\",\r",
+							"    \"status\",\r",
+							"    \"traceId\",\r",
+							"    \"errors\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('CreatePaymentPlan - PurchaseAmount validator generated correct schema.', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CreatePaymentPlan - PurchaseAmount validator have correct error message.\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Min value for purchase amount is $1.\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; Version=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseAmount\": 0,\n    \"purhcaseDate\": \"2022-12-08T09:56:51.958Z\",\n    \"numberOfInstallments\": 4,\n    \"frequency\": 14\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePaymentPlan-Frequency validation error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status is bad request\r",
+							"pm.test(\"CreatePaymentPlan - Frequency validator produced bad request response.\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"traceId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"errors\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"Frequency\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          ]\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"Frequency\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"type\",\r",
+							"    \"title\",\r",
+							"    \"status\",\r",
+							"    \"traceId\",\r",
+							"    \"errors\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('CreatePaymentPlan - Frequency validator generated correct schema.', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CreatePaymentPlan - Frequency validator have correct error message.\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Min value for frequency is 1\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; Version=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseAmount\": 100,\n    \"purhcaseDate\": \"2022-12-08T09:56:51.958Z\",\n    \"numberOfInstallments\": 4,\n    \"frequency\": 0\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePaymentPlan-NumberOfInstallments validation error Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status is bad request\r",
+							"pm.test(\"CreatePaymentPlan - NumberOfInstallments validator produced bad request response.\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"traceId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"errors\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"NumberOfInstallments\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          ]\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"NumberOfInstallments\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"type\",\r",
+							"    \"title\",\r",
+							"    \"status\",\r",
+							"    \"traceId\",\r",
+							"    \"errors\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('CreatePaymentPlan - NumberOfInstallments validator generated correct schema.', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CreatePaymentPlan - NumberOfInstallments validator have correct error message.\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Min value for number of installments is 1.\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; Version=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseAmount\": 100,\n    \"purhcaseDate\": \"2022-12-08T09:56:51.958Z\",\n    \"numberOfInstallments\": 0,\n    \"frequency\": 14\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePaymentPlan-PurhcaseDate validation error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status is bad request\r",
+							"pm.test(\"CreatePaymentPlan - PurhcaseDate validator produced bad request response.\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"traceId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"errors\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"PurhcaseDate\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          ]\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"PurhcaseDate\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"type\",\r",
+							"    \"title\",\r",
+							"    \"status\",\r",
+							"    \"traceId\",\r",
+							"    \"errors\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('CreatePaymentPlan - PurhcaseDate validator generated correct schema.', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CreatePaymentPlan - PurhcaseDate validator have correct error message.\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Purhcase date shold not be null or default.\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; Version=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseAmount\": 100,\n    \"numberOfInstallments\": 4,\n    \"frequency\": 14\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPaymentPlan-Successful",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GetPaymentPlan - generated successful status.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Validate Correct schema is generated for from API\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"paymentPlanId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"purchaseAmount\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"installments\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"installmentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"dueDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"amount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"installmentId\",\r",
+							"            \"dueDate\",\r",
+							"            \"amount\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"paymentPlanId\",\r",
+							"    \"purchaseAmount\",\r",
+							"    \"installments\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test('GetPaymentPlan - Generates correct schema', function () {\r",
+							"    pm.expect(tv4.validate(jsonResponse, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan/id/{{PaymentPlanId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan",
+						"id",
+						"{{PaymentPlanId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPaymentPlan-Not found",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GetPaymentPlan-Not found generates not found status.\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/PaymentPlan/id/{{$guid}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"PaymentPlan",
+						"id",
+						"{{$guid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "PaymentPlanId",
+			"value": ""
+		}
+	]
+}
