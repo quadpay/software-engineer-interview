@@ -8,21 +8,27 @@ namespace Zip.Installments.DAL.AppContext
     /// </summary>
     public class OrdersDbContext : DbContext
     {
-        public OrdersDbContext(DbContextOptions<OrdersDbContext> options) : base(options)
+        /// <summary>
+        ///     Initialize an db context instance
+        /// </summary>
+        /// <param name="options">The db options</param>
+        public OrdersDbContext(DbContextOptions<OrdersDbContext> options) 
+            : base(options)
         {
         }
 
+        /// <summary>
+        ///     Configure db options
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Order>()
-        //        .Property(n => n.Payment);
-        //}
-
+        /// <summary>
+        ///     Db instance of orders
+        /// </summary>
         public DbSet<Order> Orders { get; set; }
 
     }

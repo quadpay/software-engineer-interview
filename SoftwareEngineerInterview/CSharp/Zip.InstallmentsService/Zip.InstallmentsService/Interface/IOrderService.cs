@@ -10,7 +10,17 @@ namespace Zip.InstallmentsService.Interface
     /// </summary>
     public interface IOrderService
     {
+        /// <summary>
+        ///     Create the order of payment with instalments
+        /// </summary>
+        /// <param name="order">An view model of order</param>
+        /// <returns>Return created order</returns>
         Task<OrderResponse> CreateOrder(OrdersViewModel order);
+
+        /// <summary>
+        ///     Get the list of orders
+        /// </summary>
+        /// <returns>Returns list of orders</returns>
         Task<IList<Order>> GetOrders();
     }
 }

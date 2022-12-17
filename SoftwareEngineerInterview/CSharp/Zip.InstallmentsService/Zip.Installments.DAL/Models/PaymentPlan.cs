@@ -11,6 +11,6 @@ namespace Zip.Installments.DAL.Models
 
 		public decimal PurchaseAmount { get; set; }
 
-        public ICollection<Installment> Installments { get; set; }
+        public virtual ICollection<Installment> Installments { get; set; }
     }
 }

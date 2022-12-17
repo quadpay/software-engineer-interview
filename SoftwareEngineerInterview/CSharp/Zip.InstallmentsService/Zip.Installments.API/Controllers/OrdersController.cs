@@ -119,7 +119,8 @@ namespace Zip.Installments.API.Controllers
             catch (Exception ex)
             {
                 this.logger.LogError(ex.Message, ex);
-                return ObjectResponse.GetResults(HttpStatusCode.Conflict, ex.Message, true);
+                //return ObjectResponse.GetResults(HttpStatusCode.Conflict, ex.Message, true);
+                return ObjectResponse.GetResults(HttpStatusCode.InternalServerError, ex.ToString());
             }
 
         }

@@ -1,27 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
 using Zip.Installments.DAL.Interfaces;
 
 namespace Zip.Installments.DAL.AppContext
 {
+    /// <summary>
+    ///     The repository base class
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class RepositoryBase<T> : IRepositoryBase<T>
         where T : class
     {
         private readonly OrdersDbContext dbContext;
 
+        /// <summary>     
+        ///     Initialize an <see cref="RepositoryBase"/>
+        /// </summary>
+        /// <param name="dbContext"></param>
         public RepositoryBase(OrdersDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
+
         public async Task Create(T entity)
         {
            var id = await this.dbContext.Set<T>().AddAsync(entity);
-            _ = this.dbContext.SaveChangesAsync();
         }
 
         public async Task<IList<T>> FindAll()
         {
-            var resp = this.dbContext.Set<T>().AsQueryable();
+            var resp = this.dbContext.Set<T>().AsNoTracking().AsQueryable();
             return await resp.ToListAsync();
         }
 
@@ -32,7 +41,6 @@ namespace Zip.Installments.DAL.AppContext
             if (record != null)
             {
                 this.dbContext.Set<T>().Remove(entity);
-                ret = await dbContext.SaveChangesAsync();
             }
 
             return ret;

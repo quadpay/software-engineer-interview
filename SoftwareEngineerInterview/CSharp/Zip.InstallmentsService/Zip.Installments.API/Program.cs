@@ -6,8 +6,14 @@ using Zip.InstallmentsService.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var config = builder.Configuration;
+
 // Add services to the container.
 
+////SQL DB
+//builder.Services.AddDbContext<OrdersDbContext>(x => x.UseSqlServer(config.GetSection("ConnectionStrings:DbConection").Value));
+
+////In-Memory-Db
 builder.Services.AddDbContext<OrdersDbContext>(x => x.UseInMemoryDatabase("testdb"));
 builder.Services.AddServiceExtensions();
 

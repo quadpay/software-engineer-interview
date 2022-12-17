@@ -17,35 +17,51 @@ namespace Zip.InstallmentsService.Services
     {
         private readonly IRepositoryWrapper repository;
 
+        /// <summary>
+        ///     Initialize an instance of <see cref="OrderService"/>
+        /// </summary>
+        /// <param name="repository"></param>
         public OrderService(IRepositoryWrapper repository)
         {
             this.repository = repository;
         }
 
+        /// <summary>
+        ///     Get the list of orders
+        /// </summary>
+        /// <returns>Returns list of orders</returns>
         public async Task<IList<Order>> GetOrders()
         {
             var response = await this.repository.OrdersRepository.FindAll();
             return response.OrderByDescending(n => n.FirstName).ToList();
         }
 
+        /// <summary>
+        ///     Create the order of payment with instalments
+        /// </summary>
+        /// <param name="order">An view model of order</param>
+        /// <returns>Return created order</returns>
         public async Task<OrderResponse> CreateOrder(OrdersViewModel order)
         {
-            if (order.NumberOfInstallments > 0)
+            if (order == null || order.NumberOfInstallments <= 0)
             {
-                var newOrder = new Order
-                {
-                    Id = order.Id,
-                    ProductId = order.ProductId,
-                    Description = order.Description,
-                    Email = order.Email,
-                    FirstName = order.FirstName,
-                    LastName = order.LastName,
-                    NumberOfInstallments = order.NumberOfInstallments,
-                    Payment = this.CreateInstallments(order)
-
-                };
-                await this.repository.OrdersRepository.Create(newOrder);
+                throw new ArgumentNullException("Invalid Instalments");
             }
+            var newOrder = new Order
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Description = order.Description,
+                Email = order.Email,
+                FirstName = order.FirstName,
+                LastName = order.LastName,
+                NumberOfInstallments = order.NumberOfInstallments,
+                Payment = this.CreateInstallments(order)
+
+            };
+            await this.repository.OrdersRepository.Create(newOrder);
+            await this.repository.Save();
+
 
             return new OrderResponse
             {
