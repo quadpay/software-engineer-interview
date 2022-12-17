@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Zip.Installments.DAL.Models;
+using Zip.Installments.ViewModel.Orders;
 
 namespace Zip.Installments.Validations.Controllers
 {
-    public class CreateOrdersValidator: AbstractValidator<Order>
+    public class CreateOrdersValidator: AbstractValidator<OrdersViewModel>
     {
         public CreateOrdersValidator()
         {

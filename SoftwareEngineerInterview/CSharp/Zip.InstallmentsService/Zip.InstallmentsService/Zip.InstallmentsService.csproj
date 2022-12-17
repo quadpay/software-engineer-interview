@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Zip.Installments.DAL\Zip.Installments.DAL.csproj" />
+    <ProjectReference Include="..\Zip.Installments.ViewModel\Zip.Installments.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

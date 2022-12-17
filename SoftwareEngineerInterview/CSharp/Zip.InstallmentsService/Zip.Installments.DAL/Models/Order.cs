@@ -12,7 +12,6 @@
         public string LastName { get; set; }
         public string Email { get; set; }
         public int NumberOfInstallments { get; set; }
-        public int Frequency { get; set; }
         public PaymentPlan Payment { get; set; }
     }
 }

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Zip.Installments.DAL.Constants;
 using Zip.Installments.DAL.Interfaces;
 using Zip.Installments.DAL.Models;
+using Zip.Installments.ViewModel.Orders;
 using Zip.InstallmentsService.Interface;
 
 namespace Zip.InstallmentsService.Services
@@ -21,12 +24,27 @@ namespace Zip.InstallmentsService.Services
 
         public async Task<IList<Order>> GetOrders()
         {
-            return await this.repository.OrdersRepository.FindAll();
+            var response = await this.repository.OrdersRepository.FindAll();
+            return response.OrderByDescending(n=>n.FirstName).ToList();
         }
 
-        public async Task<OrderResponse> CreateOrder(Order order)
+        public async Task<OrderResponse> CreateOrder(OrdersViewModel order)
         {
-            await this.repository.OrdersRepository.Create(order);
+            if (order.NumberOfInstallments > 0)
+            {
+                var newOrder = new Order
+                {
+                    Id = order.Id,
+                    ProductId = order.ProductId,
+                    Description = order.Description,
+                    Email = order.Email,
+                    FirstName = order.FirstName,
+                    LastName = order.LastName,
+                };
+
+                newOrder.Payment = this.CreateInstallments(order);
+            }
+            //await this.repository.OrdersRepository.Create(order);
             return new OrderResponse
             {
                 Id = order.Id,
@@ -34,6 +52,55 @@ namespace Zip.InstallmentsService.Services
                 OrderStatus = OrderStatus.Purchased
             };
 
+        }
+
+        private PaymentPlan CreateInstallments(OrdersViewModel payment)
+        {
+            PaymentPlan paymentPlan = new PaymentPlan();
+
+            if (payment == null)
+            {
+                throw new InvalidOperationException("Invalid payment plan");
+            }
+
+            if (payment.NumberOfInstallments == 0)
+            {
+                throw new InvalidOperationException("No valid installments found");
+            }
+            paymentPlan.Id = Guid.NewGuid();
+            paymentPlan.PurchaseAmount = payment.PurchaseAmount;
+            paymentPlan.Installments = this.CalculateInstallments(
+                payment.PurchaseAmount,
+                payment.NumberOfInstallments,
+                payment.Frequency,
+                payment.FirstPaymentDate);
+
+            return paymentPlan;
+        }
+
+        private List<Installment> CalculateInstallments(decimal purchaseAmount, int numberOfInstallments, int frequency, DateTime firstPaymentDate)
+        {
+            var installments = new List<Installment>();
+            var oneInstallmentAmount = purchaseAmount / numberOfInstallments;
+
+            installments.Add(new Installment
+            {
+                Id = Guid.NewGuid(),
+                Amount = oneInstallmentAmount,
+                DueDate = firstPaymentDate,
+            });
+
+            for (int term = 1; term < numberOfInstallments; term++)
+            {
+                installments.Add(new Installment
+                {
+                    Id = Guid.NewGuid(),
+                    Amount = oneInstallmentAmount,
+                    DueDate = firstPaymentDate.AddDays(frequency),
+                });
+            }
+
+            return installments;
         }
     }
 }

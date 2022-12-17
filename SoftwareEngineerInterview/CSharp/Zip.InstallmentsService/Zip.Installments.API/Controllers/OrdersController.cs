@@ -2,6 +2,7 @@
 using System.Net;
 using Zip.Installments.DAL.Models;
 using Zip.Installments.Validations.Controllers;
+using Zip.Installments.ViewModel.Orders;
 using Zip.InstallmentsService.Helpers;
 using Zip.InstallmentsService.Interface;
 
@@ -72,7 +73,7 @@ namespace Zip.Installments.API.Controllers
         /// <returns>Returns an instance of <see cref="OrderResponse"/></returns>
         [HttpPost("")]
         public async Task<IActionResult> CreateOrders(
-            [FromBody] Order order)
+            [FromBody] OrdersViewModel order)
         {
 
             try
