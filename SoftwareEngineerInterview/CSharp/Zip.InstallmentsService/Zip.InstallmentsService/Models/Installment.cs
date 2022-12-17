@@ -1,6 +1,6 @@
 using System;
 
-namespace Zip.InstallmentsService
+namespace Zip.InstallmentsService.Models
 {
     /// <summary>
     /// Data structure which defines all the properties for an installment.

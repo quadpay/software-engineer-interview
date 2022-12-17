@@ -1,4 +1,6 @@
-namespace Zip.InstallmentsService
+using Zip.InstallmentsService.Models;
+
+namespace Zip.InstallmentsService.Factory.Payments
 {
     /// <summary>
     /// This class is responsible for building the PaymentPlan according to the Zip product definition.
@@ -10,10 +12,8 @@ namespace Zip.InstallmentsService
         /// </summary>
         /// <param name="purchaseAmount">The total amount for the purchase that the customer is making.</param>
         /// <returns>The PaymentPlan created with all properties set.</returns>
-        public PaymentPlan CreatePaymentPlan(decimal purchaseAmount)
-        {
+        public PaymentPlan CreatePaymentPlan(decimal purchaseAmount) =>
             // TODO
-            return new PaymentPlan();
-        }
+            new PaymentPlan();
     }
 }
