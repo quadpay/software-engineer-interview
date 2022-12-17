@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Zip.Installments.DAL.Models;
 
 namespace Zip.Installments.DAL.AppContext
@@ -7,11 +6,9 @@ namespace Zip.Installments.DAL.AppContext
     /// <summary>
     ///     The database context Definition class.
     /// </summary>
-    public class OrdersDbContext: DbContext
+    public class OrdersDbContext : DbContext
     {
-        private readonly IConfiguration configuration;
-
-        public OrdersDbContext(DbContextOptions<OrdersDbContext> options):base(options)
+        public OrdersDbContext(DbContextOptions<OrdersDbContext> options) : base(options)
         {
         }
 
@@ -19,6 +16,12 @@ namespace Zip.Installments.DAL.AppContext
         {
             base.OnConfiguring(optionsBuilder);
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Order>()
+        //        .Property(n => n.Payment);
+        //}
 
         public DbSet<Order> Orders { get; set; }
 

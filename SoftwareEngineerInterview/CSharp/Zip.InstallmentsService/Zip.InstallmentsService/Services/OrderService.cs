@@ -80,11 +80,14 @@ namespace Zip.InstallmentsService.Services
             return paymentPlan;
         }
 
-        private List<Installment> CalculateInstallments(decimal purchaseAmount, int numberOfInstallments, int frequency, DateTime firstPaymentDate)
+        private Installment[] CalculateInstallments(decimal purchaseAmount, int numberOfInstallments, int frequency, DateTime firstPaymentDate)
         {
             var installments = new List<Installment>();
             var oneInstallmentAmount = purchaseAmount / numberOfInstallments;
-
+            if (firstPaymentDate.Date < DateTime.Now.Date)
+            {
+                throw new InvalidOperationException("Invalid payment date");
+            }
             installments.Add(new Installment
             {
                 Id = Guid.NewGuid(),
@@ -102,7 +105,7 @@ namespace Zip.InstallmentsService.Services
                 });
             }
 
-            return installments;
+            return installments.ToArray();
         }
     }
 }

@@ -15,14 +15,14 @@ namespace Zip.Installments.DAL.AppContext
         }
         public async Task Create(T entity)
         {
-            await this.dbContext.Set<T>().AddAsync(entity);
+           var id = await this.dbContext.Set<T>().AddAsync(entity);
             _ = this.dbContext.SaveChangesAsync();
         }
 
         public async Task<IList<T>> FindAll()
         {
-            var resp = await this.dbContext.Set<T>().AsQueryable().ToListAsync();
-            return resp;
+            var resp = this.dbContext.Set<T>().AsQueryable();
+            return await resp.ToListAsync();
         }
 
         public async Task<int> Delete(T entity)
