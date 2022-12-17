@@ -7,7 +7,15 @@ namespace Zip.Installments.Validations.Controllers
     {
         public CreateOrdersValidator()
         {
-            RuleFor(model => model.Email).NotEmpty().EmailAddress();
+            RuleLevelCascadeMode = CascadeMode.Stop;
+            RuleFor(model => model.Email)
+                .NotNull()
+                .NotEmpty()
+                .EmailAddress();
+            RuleFor(x => x.FirstName)
+                .NotNull()
+                .NotEmpty()
+                .MinimumLength(1);  
         }
     }
 }

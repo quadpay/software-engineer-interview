@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Zip.Installments.Validations.Controllers;
 using Zip.InstallmentsService.Helpers;
 using Zip.InstallmentsService.Interface;
 using Zip.InstallmentsService.Models;
@@ -80,9 +81,19 @@ namespace Zip.Installments.API.Controllers
                 {
                     throw new ArgumentNullException("Invalid Order");
                 }
-                var response = this.orderService.CreateOrder(order);
-                return response == null ? this.NotFound() :
-                    Ok(response);
+                var validator = new CreateOrdersValidator();
+                var validationResult = validator.Validate(order);
+                if (validationResult.IsValid)
+                {
+                    var response = this.orderService.CreateOrder(order);
+
+                    return response == null ? this.NotFound() :
+                        Ok(response);
+                }
+                else
+                {
+                    return this.NotFound();
+                }
             }
             catch (UnauthorizedAccessException ex)
             {
