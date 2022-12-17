@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Zip.InstallmentsService.Interface;
 using Zip.InstallmentsService.Models;
 
@@ -14,11 +15,12 @@ namespace Zip.InstallmentsService.Services
 
         }
 
-        public List<Order> GetOrders()
+        public async Task<List<Order>> GetOrders()
         {
             return new List<Order>();
         }
-        public OrderResponse CreateOrder(Order order)
+
+        public async Task<OrderResponse> CreateOrder(Order order)
         {
 
             return new OrderResponse();
