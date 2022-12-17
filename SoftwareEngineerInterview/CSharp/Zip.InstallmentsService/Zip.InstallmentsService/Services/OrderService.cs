@@ -1,10 +1,11 @@
-﻿using Zip.InstallmentsService.Interface;
+﻿using System.Collections.Generic;
+using Zip.InstallmentsService.Interface;
 using Zip.InstallmentsService.Models;
 
 namespace Zip.InstallmentsService.Services
 {
     /// <summary>
-    ///     The Implementation of Order Services
+    ///     The Implemet
     /// </summary>
     public class OrderService: IOrderService
     {
@@ -13,8 +14,14 @@ namespace Zip.InstallmentsService.Services
 
         }
 
-        public void CreateOrder(Order order)
+        public List<Order> GetOrders()
         {
+            return new List<Order>();
+        }
+        public OrderResponse CreateOrder(Order order)
+        {
+
+            return new OrderResponse();
             
         }
     }
