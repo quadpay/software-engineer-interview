@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Zip.InstallmentsService
 {
@@ -11,6 +12,6 @@ namespace Zip.InstallmentsService
 
 		public decimal PurchaseAmount { get; set; }
 
-        public Installment[] Installments { get; set; }
+        public List<Installment> Installments { get; set; }
     }
 }
