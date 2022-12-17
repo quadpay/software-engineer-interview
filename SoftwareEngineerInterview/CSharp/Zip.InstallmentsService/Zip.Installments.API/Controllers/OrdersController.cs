@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Zip.InstallmentsService.Helpers;
 using Zip.InstallmentsService.Interface;
@@ -7,6 +6,9 @@ using Zip.InstallmentsService.Models;
 
 namespace Zip.Installments.API.Controllers
 {
+    /// <summary>
+    ///     The Definition of user orders controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -22,6 +24,12 @@ namespace Zip.Installments.API.Controllers
             this.logger = logger;
         }
 
+
+        /// <summary>
+        ///     GET: To get the list of user orders 
+        /// </summary>
+        /// <param name="order">An instance of <see cref="Order"/></param>
+        /// <returns>Returns an instance of <see cref="OrderResponse"/></returns>
         [HttpGet("")]
         public async Task<IActionResult> GetOrders()
         {
@@ -56,8 +64,14 @@ namespace Zip.Installments.API.Controllers
 
         }
 
+        /// <summary>
+        ///     POST: Create user order 
+        /// </summary>
+        /// <param name="order">An instance of <see cref="Order"/></param>
+        /// <returns>Returns an instance of <see cref="OrderResponse"/></returns>
         [HttpPost("")]
-        public async Task<IActionResult> CreateOrders(Order order)
+        public async Task<IActionResult> CreateOrders(
+            [FromBody] Order order)
         {
 
             try

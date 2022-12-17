@@ -6,7 +6,7 @@ using Zip.InstallmentsService.Models;
 namespace Zip.InstallmentsService.Services
 {
     /// <summary>
-    ///     The Implemet
+    ///     The Implemetation of order service
     /// </summary>
     public class OrderService: IOrderService
     {
