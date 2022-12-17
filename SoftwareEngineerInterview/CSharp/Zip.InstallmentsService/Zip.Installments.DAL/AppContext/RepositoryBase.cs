@@ -21,7 +21,8 @@ namespace Zip.Installments.DAL.AppContext
 
         public async Task<IList<T>> FindAll()
         {
-            return await this.dbContext.Set<T>().ToListAsync();
+            var resp = await this.dbContext.Set<T>().AsQueryable().ToListAsync();
+            return resp;
         }
 
         public async Task<int> Delete(T entity)

@@ -11,9 +11,9 @@ namespace Zip.InstallmentsService.ServiceExtensions
     {
         public static IServiceCollection AddServiceExtensions(this IServiceCollection service)
         {
-            service.AddTransient<IOrderService, OrderService>();
-            service.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
-            service.AddTransient<IOrdersRepository, OrdersRepository>();
+            service.AddScoped<IOrderService, OrderService>();
+            service.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            service.AddScoped<IOrdersRepository, OrdersRepository>();
             //OrdersRepository 
             return service;
         }

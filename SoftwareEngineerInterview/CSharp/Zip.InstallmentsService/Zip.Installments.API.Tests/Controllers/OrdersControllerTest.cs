@@ -5,7 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 using Zip.Installments.API.Controllers;
-using Zip.Installments.DAL.Models;
+using Zip.Installments.ViewModel.Orders;
 using Zip.InstallmentsService.Interface;
 
 namespace Zip.Installments.API.Tests.Controllers
@@ -27,7 +27,7 @@ namespace Zip.Installments.API.Tests.Controllers
         public async Task CreateOrders_Throws_ArgumentNullExceptions()
         {
             // Arrange
-            Order order = null;
+            OrdersViewModel order = null;
             // Act
             var response = await this.ordersController.CreateOrders(order) as ObjectResult;
 

@@ -38,7 +38,7 @@ namespace Zip.Installments.API.Controllers
 
             try
             {
-                var response = this.orderService.GetOrders();
+                var response = await this.orderService.GetOrders();
                 return response == null ? this.NotFound() :
                     Ok(response);
             }

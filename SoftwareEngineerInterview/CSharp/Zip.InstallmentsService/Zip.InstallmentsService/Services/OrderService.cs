@@ -25,7 +25,7 @@ namespace Zip.InstallmentsService.Services
         public async Task<IList<Order>> GetOrders()
         {
             var response = await this.repository.OrdersRepository.FindAll();
-            return response.OrderByDescending(n=>n.FirstName).ToList();
+            return response.OrderByDescending(n => n.FirstName).ToList();
         }
 
         public async Task<OrderResponse> CreateOrder(OrdersViewModel order)
@@ -40,11 +40,13 @@ namespace Zip.InstallmentsService.Services
                     Email = order.Email,
                     FirstName = order.FirstName,
                     LastName = order.LastName,
-                };
+                    NumberOfInstallments = order.NumberOfInstallments,
+                    Payment = this.CreateInstallments(order)
 
-                newOrder.Payment = this.CreateInstallments(order);
+                };
+                await this.repository.OrdersRepository.Create(newOrder);
             }
-            //await this.repository.OrdersRepository.Create(order);
+
             return new OrderResponse
             {
                 Id = order.Id,
