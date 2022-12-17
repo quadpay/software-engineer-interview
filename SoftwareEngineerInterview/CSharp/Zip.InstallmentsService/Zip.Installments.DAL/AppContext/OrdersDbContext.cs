@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Zip.InstallmentsService.Models;
+using Zip.Installments.DAL.Models;
 
 namespace Zip.Installments.DAL.AppContext
 {
@@ -11,14 +11,12 @@ namespace Zip.Installments.DAL.AppContext
     {
         private readonly IConfiguration configuration;
 
-        public OrdersDbContext(IConfiguration configuration)
+        public OrdersDbContext(DbContextOptions<OrdersDbContext> options):base(options)
         {
-            this.configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("OrdersDb");
             base.OnConfiguring(optionsBuilder);
         }
 

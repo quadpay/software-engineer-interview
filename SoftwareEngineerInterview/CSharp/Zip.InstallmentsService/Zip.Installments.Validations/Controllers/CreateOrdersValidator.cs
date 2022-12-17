@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Zip.InstallmentsService.Models;
+using Zip.Installments.DAL.Models;
 
 namespace Zip.Installments.Validations.Controllers
 {

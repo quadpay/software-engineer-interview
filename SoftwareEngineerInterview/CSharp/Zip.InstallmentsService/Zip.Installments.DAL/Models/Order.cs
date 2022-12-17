@@ -1,4 +1,4 @@
-﻿namespace Zip.InstallmentsService.Models
+﻿namespace Zip.Installments.DAL.Models
 {
     /// <summary>
     ///     The POCO definition of orders
@@ -14,6 +14,5 @@
         public int NumberOfInstallments { get; set; }
         public int Frequency { get; set; }
         public PaymentPlan Payment { get; set; }
-        public Installment Installment { get; set; }
     }
 }

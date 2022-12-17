@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Zip.InstallmentsService.Models;
+using Zip.Installments.DAL.Models;
 
 namespace Zip.InstallmentsService.Interface
 {
@@ -10,6 +10,6 @@ namespace Zip.InstallmentsService.Interface
     public interface IOrderService
     {
         Task<OrderResponse> CreateOrder(Order order);
-        Task<List<Order>> GetOrders();
+        Task<IList<Order>> GetOrders();
     }
 }

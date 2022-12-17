@@ -1,5 +1,5 @@
 ﻿
-namespace Zip.InstallmentsService.Constants
+namespace Zip.Installments.DAL.Constants
 {
     /// <summary>
     ///     The current order status

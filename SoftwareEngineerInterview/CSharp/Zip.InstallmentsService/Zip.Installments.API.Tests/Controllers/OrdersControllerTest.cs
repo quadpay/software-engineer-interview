@@ -5,8 +5,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 using Zip.Installments.API.Controllers;
+using Zip.Installments.DAL.Models;
 using Zip.InstallmentsService.Interface;
-using Zip.InstallmentsService.Models;
 
 namespace Zip.Installments.API.Tests.Controllers
 {

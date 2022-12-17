@@ -1,6 +1,6 @@
-﻿using Zip.InstallmentsService.Constants;
+﻿using Zip.Installments.DAL.Constants;
 
-namespace Zip.InstallmentsService.Models
+namespace Zip.Installments.DAL.Models
 {
     /// <summary>
     ///     Order response structure definition

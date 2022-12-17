@@ -1,10 +1,15 @@
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using Zip.Installments.DAL.AppContext;
 using Zip.Installments.Validations.Controllers;
 using Zip.InstallmentsService.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<OrdersDbContext>(x => x.UseInMemoryDatabase("testdb"));
+builder.Services.AddServiceExtensions();
 
 builder.Services.AddControllers();
 builder.Services.AddControllers()
@@ -14,7 +19,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer(); 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddServiceExtensions();
+
 
 var app = builder.Build();
 

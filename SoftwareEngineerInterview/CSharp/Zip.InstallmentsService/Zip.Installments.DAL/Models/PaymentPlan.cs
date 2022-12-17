@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zip.InstallmentsService.Models
+namespace Zip.Installments.DAL.Models
 {
     /// <summary>
     /// Data structure which defines all the properties for a purchase installment plan.
@@ -11,6 +11,6 @@ namespace Zip.InstallmentsService.Models
 
 		public decimal PurchaseAmount { get; set; }
 
-        public Installment[] Installments { get; set; }
+        public List<Installment> Installments { get; set; }
     }
 }
