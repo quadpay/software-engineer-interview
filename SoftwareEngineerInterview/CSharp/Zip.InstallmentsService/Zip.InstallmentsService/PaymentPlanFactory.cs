@@ -11,7 +11,7 @@ namespace Zip.InstallmentsService
         /// <summary>
         /// Builds the PaymentPlan instance.
         /// </summary>
-        /// <param name="purchaseAmount">The total amount for the purchase that the customer is making.</param>
+        /// <param name="installmentRequest">The total amount, no. of installments, installment frequency for the purchase that the customer is making.</param>
         /// <returns>The PaymentPlan created with all properties set.</returns>
         public PaymentPlan CreatePaymentPlan(InstallmentRequest installmentRequest)
         {
@@ -31,10 +31,8 @@ namespace Zip.InstallmentsService
                 Guid guidInstallment = Guid.NewGuid();
                 lstInstallments.Add(new Installment { Amount = installmentAmount , DueDate = nxtDueDate, Id = guidInstallment }) ;
                 nxtDueDate = nxtDueDate.AddDays(installmentRequest.FrequencyOfInstallment);
-                //status =  StoreInstallmentPaymentPlan(installment);
             }
             paymentPlan.Installments = lstInstallments;
-            // TODO
             return paymentPlan;
         }
     }
