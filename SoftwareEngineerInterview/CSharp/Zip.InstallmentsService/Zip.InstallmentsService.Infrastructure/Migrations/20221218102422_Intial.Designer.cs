@@ -12,8 +12,8 @@ using Zip.InstallmentsService.Infrastructure.DBContext;
 namespace Zip.InstallmentsService.Infrastructure.Migrations
 {
     [DbContext(typeof(PaymentPlanDBContext))]
-    [Migration("20221215060137_Second")]
-    partial class Second
+    [Migration("20221218102422_Intial")]
+    partial class Intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,8 +34,8 @@ namespace Zip.InstallmentsService.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<decimal>("Amount")
-                        .HasPrecision(10, 3)
-                        .HasColumnType("decimal(10,3)");
+                        .HasPrecision(18, 3)
+                        .HasColumnType("decimal(18,3)");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");

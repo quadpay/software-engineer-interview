@@ -20,14 +20,21 @@ namespace Zip.InstallmentsService.Api.Controllers
         [Route("GetInstallments")]
         public async Task<IActionResult> GetInstallments(PaymentPlan paymentPlan)
         {
-            if(paymentPlan.PaymentPlanId==null || paymentPlan.PurchaseAmount==0)
+            try
             {
-               return BadRequest("Please provide Payment Plan");
+
+                if (paymentPlan.PaymentPlanId == null || paymentPlan.PurchaseAmount == 0)
+                {
+                    return BadRequest("Please provide Payment Plan");
+                }
+
+                var Installments = await _paymentPlanService.CreatePaymentPlan(paymentPlan);
+                return new OkObjectResult(Installments);
             }
-                    
-            var Installments = await _paymentPlanService.CreatePaymentPlan(paymentPlan);
-            return new OkObjectResult(Installments);
-           
+            catch
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
       
     }

@@ -14,6 +14,11 @@ namespace Zip.InstallmentsService.Infrastructure.DBContext
         {
         }
 
-        public DbSet<Installment> installment { get; set; }    
+        public DbSet<Installment> installment { get; set; }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Installment>()
+        //        .HasNoKey();
+        //}
     }
 }
