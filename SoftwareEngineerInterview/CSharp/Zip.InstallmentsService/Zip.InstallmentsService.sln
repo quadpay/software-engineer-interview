@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InstallmentCalculationAPI", "InstallmentCalculationAPI\InstallmentCalculationAPI.csproj", "{1F650D61-C276-4673-97D5-27A0E4138344}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.InstallmentService.DataAccess", "Zip.InstallmentService.DataAccess\Zip.InstallmentService.DataAccess.csproj", "{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,18 @@ Global
 		{1F650D61-C276-4673-97D5-27A0E4138344}.Release|x64.Build.0 = Release|Any CPU
 		{1F650D61-C276-4673-97D5-27A0E4138344}.Release|x86.ActiveCfg = Release|Any CPU
 		{1F650D61-C276-4673-97D5-27A0E4138344}.Release|x86.Build.0 = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|x64.Build.0 = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -47,9 +47,9 @@ namespace Zip.InstallmentsService.Test
         {
             PaymentPlan plan = new PaymentPlan();
             var querydata = GetPaymentPlan();
-            queryDataAccess.Setup(x => x.GetAllPaymentPlan(GetGuid(), con)).Returns(querydata);
+            queryDataAccess.Setup(x => x.GetAllPaymentPlan(GetGuid())).Returns(querydata);
             var queryDataAccessmock = queryDataAccess.Object;
-            plan = queryDataAccessmock.GetAllPaymentPlan(GetGuid(), con);
+            plan = queryDataAccessmock.GetAllPaymentPlan(GetGuid());
             Assert.NotNull(plan);
             Assert.Equal(4, plan.Installments.Count());
         }
@@ -62,9 +62,9 @@ namespace Zip.InstallmentsService.Test
         {
             bool status = true;
             var queryData = GetPaymentPlan();
-            commandDataAccess.Setup(x => x.StorePaymentPlan(queryData, con)).Returns(status);
+            commandDataAccess.Setup(x => x.StorePaymentPlan(queryData)).Returns(status);
             var commandDataAccessMock = commandDataAccess.Object;
-            var result = commandDataAccessMock.StorePaymentPlan(queryData, con);
+            var result = commandDataAccessMock.StorePaymentPlan(queryData);
             Assert.True(result);
         }
     }

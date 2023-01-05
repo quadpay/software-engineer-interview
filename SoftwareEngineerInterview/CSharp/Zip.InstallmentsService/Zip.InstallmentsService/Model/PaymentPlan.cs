@@ -13,13 +13,13 @@ namespace Zip.InstallmentsService
         /// </summary>
         public Guid Id { get; set; }
         /// <summary>
-        /// get or set propery for parchase  amount 
+        /// get or set propery for parchase  amount    
         /// </summary>
-		public decimal PurchaseAmount { get; set; }
+		public decimal PurchaseAmount { get; set; }   
 
         /// <summary>
         /// Get or set list of Installment details for each purchase order
         /// </summary>
-        public List<Installment> Installments { get; set; }
+        public List<Installment> Installments { get; set; }  
     }
 }

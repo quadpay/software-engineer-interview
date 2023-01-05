@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Zip.InstallmentsService.Model;
 
 namespace Zip.InstallmentsService.Test
 {
@@ -32,6 +34,15 @@ namespace Zip.InstallmentsService.Test
 
             return paymentPlan;
         }
+        /// <summary>
+        /// This method generate empty payment plan
+        /// </summary>
+        /// <returns>empty payment plan</returns>
+        internal PaymentPlan GetEmptyPaymentPlan()
+        {
+            PaymentPlan paymentPlan = new PaymentPlan();
+            return paymentPlan;
+        }
 
         /// <summary>
         /// This method generate request object for creating payment plan
@@ -41,6 +52,12 @@ namespace Zip.InstallmentsService.Test
         {
             InstallmentRequest installmentRequest = new InstallmentRequest
             { FrequencyOfInstallment = 14, Installments = 4, OrderAmount = 100, StartDate = DateTime.Now };
+
+            return installmentRequest;
+        }
+        internal InstallmentRequest GetInstallmentRequestFail()
+        {
+            InstallmentRequest installmentRequest = new InstallmentRequest();
 
             return installmentRequest;
         }
@@ -65,6 +82,27 @@ namespace Zip.InstallmentsService.Test
         internal Guid GetGuid()
         {
             return new Guid("BBA85D17-3F6B-4839-B0C0-F1E3FAE7B454");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal Guid GetRandomGuid()
+        {
+            return Guid.NewGuid();
+        }
+
+        internal async Task<HttpContext> GetKeynotFoundHttpContext()
+        {
+            HttpContext context = new DefaultHttpContext();
+            ErrorResponse errorResponse = new ErrorResponse
+            {
+                Success = false, StatusCode = (int)HttpStatusCode.NotFound 
+            };
+            var result = JsonSerializer.Serialize(errorResponse);
+           await context.Response.WriteAsync(result);
+            return context;
         }
     }
 }

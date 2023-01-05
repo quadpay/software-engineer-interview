@@ -8,6 +8,6 @@ namespace InstallmentCalculationAPI.Repository.RepositoryInterface
     /// </summary>
     public interface IQueryDataAccess
     {
-        PaymentPlan GetAllPaymentPlan(Guid guid, SqlConnection con);
+        PaymentPlan GetAllPaymentPlan(Guid guid);
     }
 }

@@ -71,6 +71,22 @@ namespace Zip.InstallmentsService.Test
             Assert.Equal(queryData.Installments.Count,result.PaymentPlan.Installments.Count);
         }
 
+        /// <summary>
+        /// This test case cover when record does not exist
+        /// </summary>
+        [Fact]
+        public void GetInstallmentSummaryTestFail()
+        {
+            var queryData = GetEmptyPaymentPlan();
+            calculator.Setup(x => x.GetInstallmentSummary(GetRandomGuid())).Returns(queryData);
+            var controller = new InstallmentCalculationController(calculator.Object, log.Object);
+            var result = controller.GetInstallmentSummary(GetRandomGuid());
+            Assert.Null(result.PaymentPlan);
+            Assert.Equal("Payment plan could not found.", result.ResponseMessage);
+            Assert.Equal(204, result.StatusCode);
+            Assert.Equal(false, result.Status);
+        }
+
 
     }
 }

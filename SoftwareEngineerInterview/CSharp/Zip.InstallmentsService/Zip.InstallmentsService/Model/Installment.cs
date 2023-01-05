@@ -21,5 +21,10 @@ namespace Zip.InstallmentsService
         /// Gets or sets the amount of the installment.
         /// </summary>
         public decimal Amount { get; set; }
+        
+        /// <summary>
+        ///Gets or sets the Payment Plan Id 
+        /// </summary>
+        public Guid PaymentPlanId { get; set; }
 	}
 }

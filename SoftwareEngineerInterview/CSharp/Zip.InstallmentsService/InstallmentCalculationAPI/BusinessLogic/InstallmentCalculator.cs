@@ -32,7 +32,7 @@ namespace InstallmentCalculationAPI.BusinessLogic
             _commandDataAccess = commandDataAccess;
             _paymentPlanFactory = paymentPlanFactory;
             _queryDataAccess = queryDataAccess;
-            con = new SqlConnection(_configuration.GetConnectionString("ConStr")); //Get connection string from appsetting.json
+            //con = new SqlConnection(_configuration.GetConnectionString("ConStr")); //Get connection string from appsetting.json
         }
         /// <summary>
         /// Calculate payment installment
@@ -43,12 +43,12 @@ namespace InstallmentCalculationAPI.BusinessLogic
         {
             bool status = false;
             PaymentPlan paymentPlan = new PaymentPlan();
-            try
-            {
+            //try
+            //{
                 //calculate payment plan
                 paymentPlan =  _paymentPlanFactory.CreatePaymentPlan(installmentRequest);
                 //pass calculated payment plan to command data access of repository
-                status = _commandDataAccess.StorePaymentPlan(paymentPlan, con);
+                status = _commandDataAccess.StorePaymentPlan(paymentPlan);
                 if (status)
                 {
                     return paymentPlan;
@@ -57,19 +57,19 @@ namespace InstallmentCalculationAPI.BusinessLogic
                 {
                     return null;
                 }
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                throw;
-            }
-            finally 
-            { 
-                if(con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-             }
+            //    throw;
+            //}
+            //finally 
+            //{ 
+            //    if(con.State == ConnectionState.Open)
+            //    {
+            //        con.Close();
+            //    }
+            // }
         }
         /// <summary>
         /// Get payment plan along with installment summary
@@ -79,24 +79,24 @@ namespace InstallmentCalculationAPI.BusinessLogic
         public PaymentPlan? GetInstallmentSummary(Guid guid)
         {
             PaymentPlan? plan;
-            try
-            {
+            //try
+            //{
                 //Make call to query data access to get payment plan
-                plan = _queryDataAccess.GetAllPaymentPlan(guid, con);
+                plan = _queryDataAccess.GetAllPaymentPlan(guid);
             
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
-            finally
-            {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
+            //    throw;
+            //}
+            //finally
+            //{
+            //    //if (con.State == ConnectionState.Open)
+            //    //{
+            //    //    con.Close();
+            //    //}
+            //}
 
             return plan;
         }

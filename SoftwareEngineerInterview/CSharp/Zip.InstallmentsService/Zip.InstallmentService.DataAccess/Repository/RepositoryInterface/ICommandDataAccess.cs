@@ -13,7 +13,6 @@ namespace InstallmentCalculationAPI.Repository.RepositoryInterface
     /// </summary>
     public interface ICommandDataAccess
     {
-        bool StorePaymentPlan(PaymentPlan paymentPlan, SqlConnection con);
-        protected bool StoreInstallmentDetails(List<Installment> installments, Guid paymentPlanId, SqlConnection con);
+        bool StorePaymentPlan(PaymentPlan paymentPlan);
     }
 }
