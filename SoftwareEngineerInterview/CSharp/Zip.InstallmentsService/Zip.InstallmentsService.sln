@@ -8,7 +8,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentsService.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InstallmentCalculationAPI", "InstallmentCalculationAPI\InstallmentCalculationAPI.csproj", "{1F650D61-C276-4673-97D5-27A0E4138344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.InstallmentService.DataAccess", "Zip.InstallmentService.DataAccess\Zip.InstallmentService.DataAccess.csproj", "{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.InstallmentService.DataAccess", "Zip.InstallmentService.DataAccess\Zip.InstallmentService.DataAccess.csproj", "{B3F7B199-7CCE-4A5D-AB68-65C887DFBBFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9BE81EF-D93F-47BA-B309-C0C43319157F}"
+	ProjectSection(SolutionItems) = preProject
+		Developer.md = Developer.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
