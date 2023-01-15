@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.2" />
+		<PackageReference Include="MediatR" Version="11.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
+	  <ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
+	  <ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
+	  <ProjectReference Include="..\Zip.Installements.Infra\Zip.Installements.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

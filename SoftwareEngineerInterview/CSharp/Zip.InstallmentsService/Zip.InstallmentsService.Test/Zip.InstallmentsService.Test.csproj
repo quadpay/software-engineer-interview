@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zip.InstallmentsService\Zip.InstallmentsService.csproj" />
+    <ProjectReference Include="..\Zip.InstallmentsService\Zip.Installments.Service.csproj" />
   </ItemGroup>
 
 </Project>

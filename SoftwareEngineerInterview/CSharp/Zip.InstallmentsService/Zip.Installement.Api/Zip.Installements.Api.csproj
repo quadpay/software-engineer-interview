@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="MediatR" Version="11.0.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Zip.Installements.Command\Zip.Installements.Command.csproj" />
+		<ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
+		<ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
+		<ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
+		<ProjectReference Include="..\Zip.Installements.Infra\Zip.Installements.Infrastructure.csproj" />
+		<ProjectReference Include="..\Zip.Installements.Query\Zip.Installements.Query.csproj" />
+		<ProjectReference Include="..\Zip.InstallmentsService\Zip.Installments.Service.csproj" />
+	</ItemGroup>
+
+</Project>

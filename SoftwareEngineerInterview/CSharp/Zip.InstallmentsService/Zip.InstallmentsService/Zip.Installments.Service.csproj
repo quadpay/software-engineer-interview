@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latestmajor</LangVersion>
+    <RootNamespace>Zip.InstallmentsService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
+    <ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
+    <ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
