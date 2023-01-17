@@ -4,6 +4,9 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using Zip.Installements.Domain.Entities;
 
+    /// <summary>
+    /// Class defines the configuration of payment entity class.
+    /// </summary>
     public class PaymentEntityConfiguration : IEntityTypeConfiguration<Payment>
     {
         public void Configure(EntityTypeBuilder<Payment> builder)

@@ -47,4 +47,61 @@
 ][2023-01-17 12:57:59.722 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api) in 83.2703ms
 ][2023-01-17 12:57:59.722 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
 ][2023-01-17 12:57:59.723 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/v1/paymentinstallement/1 - - - 200 - application/json;+charset=utf-8 111.4067ms
+][2023-01-17 13:22:32.272 +05:30 [INF] Now listening on: https://localhost:7188
+][2023-01-17 13:22:32.323 +05:30 [INF] Now listening on: http://localhost:5199
+][2023-01-17 13:22:32.339 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+][2023-01-17 13:22:32.344 +05:30 [INF] Hosting environment: Development
+][2023-01-17 13:22:32.346 +05:30 [INF] Content root path: C:\Users\hassa\source\repos\SalikeHassan\software-engineer-interview\SoftwareEngineerInterview\CSharp\Zip.InstallmentsService\Zip.Installement.Api\
+][2023-01-17 13:22:34.520 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/weatherforecast - -
+][2023-01-17 13:22:34.732 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/_framework/aspnetcore-browser-refresh.js - -
+][2023-01-17 13:22:34.802 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/_framework/aspnetcore-browser-refresh.js - - - 200 12012 application/javascript;+charset=utf-8 65.2402ms
+][2023-01-17 13:22:35.005 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/_vs/browserLink - -
+][2023-01-17 13:22:35.015 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/weatherforecast - - - 404 0 - 508.5390ms
+][2023-01-17 13:22:36.509 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 1503.3265ms
+][2023-01-17 13:22:36.618 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/swagger/v1/swagger.json - -
+][2023-01-17 13:22:37.050 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 431.4564ms
+][2023-01-17 13:22:48.720 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 65
+][2023-01-17 13:22:48.740 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:22:48.796 +05:30 [INF] Route matched with {action = "Post", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(Zip.Installements.Contract.Request.PaymentPlanRequest) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:22:50.678 +05:30 [INF] Saved 7 entities to in-memory store.
+][2023-01-17 13:22:51.250 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Zip.Installements.Contract.Response.InstallementDetailsResponse, Zip.Installements.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+][2023-01-17 13:22:51.316 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api) in 2510.822ms
+][2023-01-17 13:22:51.316 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:22:51.323 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 65 - 200 - application/json;+charset=utf-8 2603.0636ms
+][2023-01-17 13:22:57.235 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 65
+][2023-01-17 13:22:57.235 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:22:57.236 +05:30 [INF] Route matched with {action = "Post", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(Zip.Installements.Contract.Request.PaymentPlanRequest) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:22:57.282 +05:30 [INF] Saved 7 entities to in-memory store.
+][2023-01-17 13:22:57.289 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Zip.Installements.Contract.Response.InstallementDetailsResponse, Zip.Installements.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+][2023-01-17 13:22:57.289 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api) in 52.8787ms
+][2023-01-17 13:22:57.289 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:22:57.289 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 65 - 200 - application/json;+charset=utf-8 55.0428ms
+][2023-01-17 13:23:06.341 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/v1/paymentinstallement/1 - -
+][2023-01-17 13:23:06.342 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:06.349 +05:30 [INF] Route matched with {action = "Get", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(Int32) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:23:06.375 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Zip.Installements.Contract.Response.InstallementDetailsResponse, Zip.Installements.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+][2023-01-17 13:23:06.375 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api) in 25.2418ms
+][2023-01-17 13:23:06.375 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:06.375 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/v1/paymentinstallement/1 - - - 200 - application/json;+charset=utf-8 34.3409ms
+][2023-01-17 13:23:11.612 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/v1/paymentinstallement/2 - -
+][2023-01-17 13:23:11.613 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:11.613 +05:30 [INF] Route matched with {action = "Get", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(Int32) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:23:11.615 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Zip.Installements.Contract.Response.InstallementDetailsResponse, Zip.Installements.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+][2023-01-17 13:23:11.616 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api) in 2.1526ms
+][2023-01-17 13:23:11.616 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:11.616 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/v1/paymentinstallement/2 - - - 200 - application/json;+charset=utf-8 3.6076ms
+][2023-01-17 13:23:16.948 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7188/v1/paymentinstallement/3 - -
+][2023-01-17 13:23:16.964 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:16.964 +05:30 [INF] Route matched with {action = "Get", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(Int32) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:23:16.967 +05:30 [INF] Executing StatusCodeResult, setting HTTP status code 204
+][2023-01-17 13:23:16.967 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api) in 2.4714ms
+][2023-01-17 13:23:16.967 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Get (Zip.Installements.Api)'
+][2023-01-17 13:23:16.967 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7188/v1/paymentinstallement/3 - - - 204 - - 19.6218ms
+][2023-01-17 13:23:23.446 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 66
+][2023-01-17 13:23:23.446 +05:30 [INF] Executing endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:23:23.447 +05:30 [INF] Route matched with {action = "Post", controller = "PaymentInstallement"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(Zip.Installements.Contract.Request.PaymentPlanRequest) on controller Zip.Installements.Api.Controllers.PaymentInstallementController (Zip.Installements.Api).
+][2023-01-17 13:23:23.462 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+][2023-01-17 13:23:23.488 +05:30 [INF] Executed action Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api) in 40.9465ms
+][2023-01-17 13:23:23.488 +05:30 [INF] Executed endpoint 'Zip.Installements.Api.Controllers.PaymentInstallementController.Post (Zip.Installements.Api)'
+][2023-01-17 13:23:23.489 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7188/v1/paymentinstallement application/json 66 - 400 - application/problem+json;+charset=utf-8 43.0683ms
 ]

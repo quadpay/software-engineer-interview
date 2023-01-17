@@ -1,21 +1,23 @@
 ﻿namespace Zip.Installements.Contract.Request
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    /// <summary>
+    /// Class declares properties that are used to create installement plan.
+    /// </summary>
     public class PaymentPlanRequest 
     {
-        //[Required]
-        //[Range(1, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        /// <summary>
+        /// Actual amount.
+        /// </summary>
         public decimal Amount { get; set; }
-
-        //[Required]
-        //[Range(1, int.MaxValue, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
-
+        
+        /// <summary>
+        /// Number of installement.
+        /// </summary>
         public int NumofInstallement { get; set; }
 
-        //[Required]
-        //[Range(1, int.MaxValue, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        /// <summary>
+        /// Frequency of installement.
+        /// </summary>
         public int Frequency { get; set; }
     }
 }

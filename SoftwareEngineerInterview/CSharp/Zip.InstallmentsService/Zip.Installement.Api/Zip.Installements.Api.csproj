@@ -27,9 +27,8 @@
 		<ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
 		<ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
 		<ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
-		<ProjectReference Include="..\Zip.Installements.Infra\Zip.Installements.Infrastructure.csproj" />
 		<ProjectReference Include="..\Zip.Installements.Query\Zip.Installements.Query.csproj" />
-		<ProjectReference Include="..\Zip.InstallmentsService\Zip.Installments.Service.csproj" />
+		<ProjectReference Include="..\Zip.Installments.Service\Zip.Installments.Service.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

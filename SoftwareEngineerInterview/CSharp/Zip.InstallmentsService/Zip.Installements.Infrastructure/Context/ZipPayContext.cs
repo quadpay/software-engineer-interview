@@ -11,13 +11,13 @@
     {
         /// <summary>
         /// DbSet property
-        /// Property use for query and save, update instance of user
+        /// Property use for query and save, update instance of payment
         /// </summary>
         public virtual DbSet<Payment> Payment { get; set; }
 
         /// <summary>
         /// DbSet property
-        /// Property use for query and save, update instance of account
+        /// Property use for query and save, update instance of installementplan
         /// </summary>
         public virtual DbSet<InstallementPlan> InstallementPlan { get; set; }
 
@@ -28,7 +28,7 @@
         }
 
         /// <summary>
-        /// Overriden method to load the entity configurations
+        /// Overriden method to load the entity configurations.
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,6 +36,10 @@
             modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
 
+        /// <summary>
+        /// Method to configure the behaviour of db context object.
+        /// </summary>
+        /// <param name="options"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             //In memory database used for simplicity

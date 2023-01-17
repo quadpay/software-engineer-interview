@@ -6,8 +6,16 @@
     using Zip.Installements.Domain.Entities;
     using Zip.InstallmentsService.Interface;
 
+    /// <summary>
+    /// Class implements the method to create payment installement plan
+    /// </summary>
     public class PaymentInstallementPlan : IPaymentInstallementPlan
     {
+        /// <summary>
+        /// Method to create payment installement plan.
+        /// </summary>
+        /// <param name="paymentPlanRequest">Model contains data to create installement plan.</param>
+        /// <returns>Returns payment installement plan.</returns>
         public Payment CreatePaymentPlan(PaymentPlanRequest paymentPlanRequest)
         {
             var payment = new Payment();

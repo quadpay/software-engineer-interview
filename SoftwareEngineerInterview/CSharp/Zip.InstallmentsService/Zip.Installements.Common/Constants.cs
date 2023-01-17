@@ -1,5 +1,8 @@
 ﻿namespace Zip.Installements.Common
 {
+    /// <summary>
+    /// Class defines constants values that are used inside the project solution.
+    /// </summary>
     public static class Constants
     {
         public const int MinmValue = 0;

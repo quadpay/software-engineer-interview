@@ -15,7 +15,7 @@
 	  <ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
 	  <ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
 	  <ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
-	  <ProjectReference Include="..\Zip.Installements.Infra\Zip.Installements.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Zip.Installements.Infrastructure\Zip.Installements.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
