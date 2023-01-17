@@ -1,18 +1,21 @@
 ﻿namespace Zip.Installements.Command.Commands
 {
     using MediatR;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
-    using Zip.Installements.Contract.Request;
     using Zip.Installements.Domain.Entities;
     using Zip.Installements.Infrastructure.Context;
 
+    /// <summary>
+    /// Class defines method to create payment installement plan.
+    /// </summary>
     public class CreatePaymentInstallementPlanCommand : IRequest<int>
     {
-        public Payment payment { get; set; }
+        private readonly Payment payment;
+
+        public CreatePaymentInstallementPlanCommand(Payment payment)
+        {
+            this.payment = payment;
+        }
 
         public class CreatePaymentInstallementPlanCommandHandler : IRequestHandler<CreatePaymentInstallementPlanCommand, int>
         {

@@ -5,9 +5,17 @@
     using Zip.Installements.Contract.Response;
     using Zip.Installements.Infrastructure.Context;
 
+    /// <summary>
+    /// Class defines method to get the payment installement plan based on the payment id passed.
+    /// </summary>
     public class GetPaymentInstallementPlanByIdQuery : IRequest<List<InstallementDetailsResponse>>
     {
-        public int Id { get; set; }
+        private readonly int id;
+
+        public GetPaymentInstallementPlanByIdQuery(int id)
+        {
+            this.id = id;
+        }
 
         public class GetPaymentInstallementPlanByIdQueryHandler : IRequestHandler<GetPaymentInstallementPlanByIdQuery, List<InstallementDetailsResponse>>
         {
@@ -21,7 +29,7 @@
             {
                 return await this.zipPayContext.InstallementPlan
                            .AsNoTracking()
-                           .Where(x => x.PaymentId == request.Id)
+                           .Where(x => x.PaymentId == request.id)
                            .Select(installementPlan => new InstallementDetailsResponse()
                            {
                                PaymentId = installementPlan.PaymentId,

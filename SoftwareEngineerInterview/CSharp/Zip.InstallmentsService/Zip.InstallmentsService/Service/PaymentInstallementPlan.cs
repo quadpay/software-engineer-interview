@@ -1,7 +1,7 @@
 ﻿namespace Zip.InstallmentsService.Service
 {
-    using Microsoft.VisualBasic;
     using System;
+    using Zip.Installements.Common;
     using Zip.Installements.Contract.Request;
     using Zip.Installements.Domain.Entities;
     using Zip.InstallmentsService.Interface;
@@ -12,7 +12,9 @@
         {
             var payment = new Payment();
             payment.Amount = paymentPlanRequest.Amount;
-            var installementAmount = paymentPlanRequest.Amount / paymentPlanRequest.NumofInstallement;
+            var installementAmount = Math.Round(paymentPlanRequest.Amount / paymentPlanRequest.NumofInstallement,
+                Constants.RoundOffValue,
+                MidpointRounding.ToEven);
 
             for (var cnt = 0; cnt < paymentPlanRequest.NumofInstallement; cnt++)
             {

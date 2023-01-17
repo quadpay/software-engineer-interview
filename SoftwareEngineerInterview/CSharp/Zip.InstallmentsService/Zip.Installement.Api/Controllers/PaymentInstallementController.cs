@@ -1,15 +1,17 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Zip.Installements.Command.Commands;
-using Zip.Installements.Contract.Request;
-using Zip.Installements.Contract.Response;
-using Zip.Installements.Query.Queries;
-using Zip.InstallmentsService.Interface;
-using static Microsoft.AspNetCore.Http.StatusCodes;
-
-namespace Zip.Installements.Api.Controllers
+﻿namespace Zip.Installements.Api.Controllers
 {
+    using MediatR;
+    using Microsoft.AspNetCore.Mvc;
+    using Zip.Installements.Command.Commands;
+    using Zip.Installements.Contract.Request;
+    using Zip.Installements.Contract.Response;
+    using Zip.Installements.Query.Queries;
+    using Zip.InstallmentsService.Interface;
+    using static Microsoft.AspNetCore.Http.StatusCodes;
+
+    /// <summary>
+    /// Api to create and get payment installement.
+    /// </summary>
     [ApiVersion("1.0")]
     [Route("v{v:apiVersion}/paymentinstallement")]
     [ApiController]
@@ -25,13 +27,18 @@ namespace Zip.Installements.Api.Controllers
             this.mediator = mediator;
         }
 
+        /// <summary>
+        /// Action method returns the payment installement details based on the payment id passed.
+        /// </summary>
+        /// <param name="id">payment id.</param>
+        /// <returns>Returns the list of installement details.</returns>
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(List<InstallementDetailsResponse>), Status200OK)]
         [ProducesResponseType(Status204NoContent)]
+        [ProducesResponseType(typeof(List<InstallementDetailsResponse>), Status200OK)]
         [ProducesResponseType(Status500InternalServerError)]
         public async Task<IActionResult> Get(int id)
         {
-            var data = await this.mediator.Send(new GetPaymentInstallementPlanByIdQuery() { Id = id });
+            var data = await this.mediator.Send(new GetPaymentInstallementPlanByIdQuery(id) { });
 
             if (!data.Any())
             {
@@ -44,9 +51,15 @@ namespace Zip.Installements.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Action method to create new payment installement based on the frequency and num of installement passed in request model.
+        /// </summary>
+        /// <param name="paymentPlanRequest">Model contains data to create installement plan.</param>
+        /// <returns>Returns the list of installement details.</returns>
         [HttpPost]
         [ProducesResponseType(Status400BadRequest)]
-        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status204NoContent)]
+        [ProducesResponseType(typeof(List<InstallementDetailsResponse>), Status200OK)]
         [ProducesResponseType(Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] PaymentPlanRequest paymentPlanRequest)
         {
@@ -58,11 +71,21 @@ namespace Zip.Installements.Api.Controllers
 
             else
             {
-                var paymentPlan = this.paymentInstallementPlan.CreatePaymentPlan(paymentPlanRequest);
+                var payment = this.paymentInstallementPlan.CreatePaymentPlan(paymentPlanRequest);
 
-                var id = await this.mediator.Send(new CreatePaymentInstallementPlanCommand() { payment = paymentPlan });
+                var id = await this.mediator.Send(new CreatePaymentInstallementPlanCommand(payment) { });
 
-                return this.Ok(id);
+                var data = await this.mediator.Send(new GetPaymentInstallementPlanByIdQuery(id) { });
+
+                if (!data.Any())
+                {
+                    return this.NoContent();
+                }
+
+                else
+                {
+                    return this.Ok(data);
+                }
             }
         }
     }
