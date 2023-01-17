@@ -1,7 +1,7 @@
 ﻿namespace Zip.InstallmentsService.Interface
 {
-    using Zip.Installements.Contract.Request;
-    using Zip.Installements.Domain.Entities;
+    using Zip.Installments.Contract.Request;
+    using Zip.Installments.Domain.Entities;
 
     /// <summary>
     /// Interface declares method to create payment installement plan.

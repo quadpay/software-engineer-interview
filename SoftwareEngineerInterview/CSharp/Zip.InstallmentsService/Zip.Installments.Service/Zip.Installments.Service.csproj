@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zip.Installements.Common\Zip.Installements.Common.csproj" />
-    <ProjectReference Include="..\Zip.Installements.Contract\Zip.Installements.Contract.csproj" />
-    <ProjectReference Include="..\Zip.Installements.Domain\Zip.Installements.Domain.csproj" />
+    <ProjectReference Include="..\Zip.Installments.Common\Zip.Installments.Common.csproj" />
+    <ProjectReference Include="..\Zip.Installments.Contract\Zip.Installments.Contract.csproj" />
+    <ProjectReference Include="..\Zip.Installments.Domain\Zip.Installments.Domain.csproj" />
   </ItemGroup>
 
 </Project>
