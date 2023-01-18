@@ -10,17 +10,17 @@
     using static Microsoft.AspNetCore.Http.StatusCodes;
 
     /// <summary>
-    /// Api to create and get payment installement.
+    /// Api to create and get payment installment.
     /// </summary>
     [ApiVersion("1.0")]
-    [Route("v{v:apiVersion}/paymentinstallement")]
+    [Route("v{v:apiVersion}/paymentinstallment")]
     [ApiController]
-    public class PaymentInstallementController : ControllerBase
+    public class PaymentInstallmentController : ControllerBase
     {
         private readonly IPaymentInstallementPlan paymentInstallementPlan;
         private readonly IMediator mediator;
 
-        public PaymentInstallementController(IPaymentInstallementPlan paymentInstallementPlan,
+        public PaymentInstallmentController(IPaymentInstallementPlan paymentInstallementPlan,
             IMediator mediator)
         {
             this.paymentInstallementPlan = paymentInstallementPlan;
@@ -28,17 +28,17 @@
         }
 
         /// <summary>
-        /// Action method returns the payment installement details based on the payment id passed.
+        /// Action method returns the payment installment details based on the payment id passed.
         /// </summary>
         /// <param name="id">payment id.</param>
         /// <returns>Returns the list of installement details.</returns>
         [HttpGet("{id:int}")]
         [ProducesResponseType(Status204NoContent)]
-        [ProducesResponseType(typeof(List<InstallementDetailsResponse>), Status200OK)]
+        [ProducesResponseType(typeof(List<InstallmentDetailsResponse>), Status200OK)]
         [ProducesResponseType(Status500InternalServerError)]
         public async Task<IActionResult> Get(int id)
         {
-            var data = await this.mediator.Send(new GetPaymentInstallementPlanByIdQuery(id) { });
+            var data = await this.mediator.Send(new GetPaymentInstallmentPlanByIdQuery(id) { });
 
             if (!data.Any())
             {
@@ -52,14 +52,14 @@
         }
 
         /// <summary>
-        /// Action method to create new payment installement based on the frequency and num of installement passed in request model.
+        /// Action method to create new payment installment based on the frequency and num of installement passed in request model.
         /// </summary>
-        /// <param name="paymentPlanRequest">Model contains data to create installement plan.</param>
+        /// <param name="paymentPlanRequest">Model contains data to create installment plan.</param>
         /// <returns>Returns the list of installement details.</returns>
         [HttpPost]
         [ProducesResponseType(Status400BadRequest)]
         [ProducesResponseType(Status204NoContent)]
-        [ProducesResponseType(typeof(List<InstallementDetailsResponse>), Status200OK)]
+        [ProducesResponseType(typeof(List<InstallmentDetailsResponse>), Status200OK)]
         [ProducesResponseType(Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] PaymentPlanRequest paymentPlanRequest)
         {
@@ -73,9 +73,9 @@
             {
                 var payment = this.paymentInstallementPlan.CreatePaymentPlan(paymentPlanRequest);
 
-                var id = await this.mediator.Send(new CreatePaymentInstallementPlanCommand(payment) { });
+                var id = await this.mediator.Send(new CreatePaymentInstallmentPlanCommand(payment) { });
 
-                var data = await this.mediator.Send(new GetPaymentInstallementPlanByIdQuery(id) { });
+                var data = await this.mediator.Send(new GetPaymentInstallmentPlanByIdQuery(id) { });
 
                 if (!data.Any())
                 {

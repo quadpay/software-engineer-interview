@@ -1,9 +1,9 @@
 ﻿namespace Zip.Installments.Contract.Response
 {
     /// <summary>
-    /// Class declares properties that are used as a response of payment installement details 
+    /// Class declares properties that are used as a response of payment installment details 
     /// </summary>
-    public class InstallementDetailsResponse
+    public class InstallmentDetailsResponse
     {
         /// <summary>
         /// Due date.

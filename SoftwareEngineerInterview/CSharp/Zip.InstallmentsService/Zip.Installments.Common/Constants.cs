@@ -17,7 +17,7 @@
         public const string FrequencyReqErrMsg = "Frequency is required.";
         public const string FrequencyMinmValueErrMsg = "Frequency must be greater than 0.";
 
-        public const string NoOfInstallementReqErrMsg = "Number of installement is required.";
-        public const string NoOfInstallementMinmValueErrMsg = "Number of installement must be greater than 0.";
+        public const string NoOfInstallmentReqErrMsg = "Number of installement is required.";
+        public const string NoOfInstallmentMinmValueErrMsg = "Number of installement must be greater than 0.";
     }
 }

@@ -7,7 +7,7 @@
     using Zip.InstallmentsService.Interface;
 
     /// <summary>
-    /// Class implements the method to create payment installement plan
+    /// Class implements the method to create payment installment plan
     /// </summary>
     public class PaymentInstallmentPlan : IPaymentInstallementPlan
     {
@@ -32,7 +32,7 @@
 
             for (var cnt = 0; cnt < paymentPlanRequest.NumofInstallement; cnt++)
             {
-                payment.InstallementPlans.Add(new InstallementPlan()
+                payment.InstallmentPlans.Add(new InstallmentPlan()
                 {
                     DueAmount = installementAmount,
                     DueDate = cnt == 0 ? DateTimeOffset.UtcNow : DateTimeOffset.UtcNow.AddDays(paymentPlanRequest.Frequency * cnt)

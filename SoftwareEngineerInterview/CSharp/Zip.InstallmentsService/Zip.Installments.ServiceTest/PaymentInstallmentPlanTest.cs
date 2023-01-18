@@ -31,8 +31,8 @@ namespace Zip.Installments.ServiceTest
             Assert.Multiple(() =>
             {
                 Assert.That(paymentPlan, !Is.Null);
-                Assert.That(paymentPlan.InstallementPlans.Count, Is.GreaterThan(0));
-                Assert.That(paymentPlan.InstallementPlans?.FirstOrDefault()?.DueAmount, Is.EqualTo(250));
+                Assert.That(paymentPlan.InstallmentPlans.Count, Is.GreaterThan(0));
+                Assert.That(paymentPlan.InstallmentPlans?.FirstOrDefault()?.DueAmount, Is.EqualTo(250));
             });
         }
 

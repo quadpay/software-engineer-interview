@@ -5,8 +5,8 @@ namespace Zip.Installments.QueryTest
     using Zip.Installments.Domain.Entities;
     using Zip.Installments.Infrastructure.Context;
     using Zip.Installments.Query.Queries;
-    using static Zip.Installments.Command.Commands.CreatePaymentInstallementPlanCommand;
-    using static Zip.Installments.Query.Queries.GetPaymentInstallementPlanByIdQuery;
+    using static Zip.Installments.Command.Commands.CreatePaymentInstallmentPlanCommand;
+    using static Zip.Installments.Query.Queries.GetPaymentInstallmentPlanByIdQuery;
 
     [TestFixture]
     public class GetPaymentInstallementPlanByIdQueryTest
@@ -29,9 +29,9 @@ namespace Zip.Installments.QueryTest
                 Id = 1,
                 Amount = 2000,
                 CreateDateTime = DateTimeOffset.UtcNow,
-                InstallementPlans = new List<InstallementPlan>()
+                InstallmentPlans = new List<InstallmentPlan>()
                 {
-                    new InstallementPlan()
+                    new InstallmentPlan()
                     {
                         Id  = 2,
                         CreateDateTime = DateTimeOffset.UtcNow,
@@ -42,7 +42,7 @@ namespace Zip.Installments.QueryTest
                 }
             };
 
-            var command = new CreatePaymentInstallementPlanCommand(payment);
+            var command = new CreatePaymentInstallmentPlanCommand(payment);
             var commandHandler = new CreatePaymentInstallementPlanCommandHandler(zipPayContext);
             await commandHandler.Handle(command, new CancellationToken());
         }
@@ -53,7 +53,7 @@ namespace Zip.Installments.QueryTest
         {
             using (var context = new ZipPayContext(this.options))
             {
-                var query = new GetPaymentInstallementPlanByIdQuery(1);
+                var query = new GetPaymentInstallmentPlanByIdQuery(1);
 
                 var handler = new GetPaymentInstallementPlanByIdQueryHandler(context);
 
@@ -75,7 +75,7 @@ namespace Zip.Installments.QueryTest
             {
                 await Init(context);
 
-                var query = new GetPaymentInstallementPlanByIdQuery(1);
+                var query = new GetPaymentInstallmentPlanByIdQuery(1);
 
                 var handler = new GetPaymentInstallementPlanByIdQueryHandler(context);
 

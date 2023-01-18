@@ -17,9 +17,9 @@
                 .WithMessage(Constants.AmountMinmValueErrMsg);
 
             RuleFor(x => x.NumofInstallement).NotEmpty()
-                .WithMessage(Constants.NoOfInstallementReqErrMsg);
+                .WithMessage(Constants.NoOfInstallmentReqErrMsg);
             RuleFor(x => x.NumofInstallement).GreaterThan(Constants.MinmValue)
-                .WithMessage(Constants.NoOfInstallementMinmValueErrMsg);
+                .WithMessage(Constants.NoOfInstallmentMinmValueErrMsg);
 
             RuleFor(x => x.Frequency).NotEmpty()
                 .WithMessage(Constants.FrequencyReqErrMsg);

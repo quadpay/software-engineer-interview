@@ -5,11 +5,11 @@
     using Zip.Installments.Domain.Entities;
 
     /// <summary>
-    /// Class defines the configuration of installementplan entity class.
+    /// Class defines the configuration of installmentplan entity class.
     /// </summary>
-    public class InstallementPlanEntityConfiguration : IEntityTypeConfiguration<InstallementPlan>
+    public class InstallmentPlanEntityConfiguration : IEntityTypeConfiguration<InstallmentPlan>
     {
-        public void Configure(EntityTypeBuilder<InstallementPlan> builder)
+        public void Configure(EntityTypeBuilder<InstallmentPlan> builder)
         {
             builder.Property(x => x.DueAmount)
                 .IsRequired();
@@ -19,7 +19,7 @@
 
             //Foreign key relation
             builder.HasOne(x => x.Payment)
-                .WithMany(x => x.InstallementPlans)
+                .WithMany(x => x.InstallmentPlans)
                 .HasForeignKey(x => x.PaymentId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

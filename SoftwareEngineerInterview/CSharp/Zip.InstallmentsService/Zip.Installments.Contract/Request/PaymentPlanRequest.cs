@@ -1,7 +1,7 @@
 ﻿namespace Zip.Installments.Contract.Request
 {
     /// <summary>
-    /// Class declares properties that are used to create installement plan.
+    /// Class declares properties that are used to create installment plan.
     /// </summary>
     public class PaymentPlanRequest 
     {

@@ -6,10 +6,10 @@ namespace Zip.Installments.Command.Test
     using Zip.Installments.Command.Commands;
     using Zip.Installments.Domain.Entities;
     using Zip.Installments.Infrastructure.Context;
-    using static Zip.Installments.Command.Commands.CreatePaymentInstallementPlanCommand;
+    using static Zip.Installments.Command.Commands.CreatePaymentInstallmentPlanCommand;
 
     [TestFixture]
-    public class CreatePaymentInstallementPlanCommandTest
+    public class CreatePaymentInstallmentPlanCommandTest
     {
         private Mock<ZipPayContext> zipPayContext;
 
@@ -33,9 +33,9 @@ namespace Zip.Installments.Command.Test
                 Id = 1,
                 Amount = 2000,
                 CreateDateTime = DateTimeOffset.UtcNow,
-                InstallementPlans = new List<InstallementPlan>()
+                InstallmentPlans = new List<InstallmentPlan>()
                 {
-                    new InstallementPlan()
+                    new InstallmentPlan()
                     {
                         Id  = 2,
                         CreateDateTime = DateTimeOffset.UtcNow,
@@ -46,7 +46,7 @@ namespace Zip.Installments.Command.Test
                 }
             };
 
-            var command = new CreatePaymentInstallementPlanCommand(payment);
+            var command = new CreatePaymentInstallmentPlanCommand(payment);
 
             var handler = new CreatePaymentInstallementPlanCommandHandler(this.zipPayContext.Object);
 
@@ -67,7 +67,7 @@ namespace Zip.Installments.Command.Test
 
             this.zipPayContext.Setup(x => x.Payment).Returns(paymentDbSet.Object);
 
-            var command = new CreatePaymentInstallementPlanCommand(new Payment());
+            var command = new CreatePaymentInstallmentPlanCommand(new Payment());
 
             var handler = new CreatePaymentInstallementPlanCommandHandler(this.zipPayContext.Object);
 

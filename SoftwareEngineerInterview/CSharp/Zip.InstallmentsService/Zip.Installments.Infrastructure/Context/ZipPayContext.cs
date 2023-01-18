@@ -19,7 +19,7 @@
         /// DbSet property
         /// Property use for query and save, update instance of installementplan
         /// </summary>
-        public virtual DbSet<InstallementPlan> InstallementPlan { get; set; }
+        public virtual DbSet<InstallmentPlan> InstallementPlan { get; set; }
 
 
         public ZipPayContext(DbContextOptions options) : base(options)

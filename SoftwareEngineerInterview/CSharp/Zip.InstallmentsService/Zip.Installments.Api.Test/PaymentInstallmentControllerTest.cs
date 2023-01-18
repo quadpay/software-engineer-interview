@@ -16,11 +16,11 @@
     using Zip.InstallmentsService.Interface;
 
     [TestFixture]
-    public class PaymentInstallementControllerTest
+    public class PaymentInstallmentControllerTest
     {
         private Mock<IMediator> mediator;
         private Mock<IPaymentInstallementPlan> paymentInstallementPlan;
-        private PaymentInstallementController paymentInstallementController = null;
+        private PaymentInstallmentController paymentInstallementController = null;
 
         [SetUp]
         public void Setup()
@@ -37,9 +37,9 @@
                 Id = 1,
                 Amount = 2000,
                 CreateDateTime = DateTimeOffset.UtcNow,
-                InstallementPlans = new List<InstallementPlan>()
+                InstallmentPlans = new List<InstallmentPlan>()
                 {
-                    new InstallementPlan()
+                    new InstallmentPlan()
                     {
                         Id  = 2,
                         CreateDateTime = DateTimeOffset.UtcNow,
@@ -50,8 +50,8 @@
                 }
             };
 
-            var response = new List<InstallementDetailsResponse>()
-            { new InstallementDetailsResponse()
+            var response = new List<InstallmentDetailsResponse>()
+            { new InstallmentDetailsResponse()
                 {
                    PaymentId = 1,
                    DueAmount = 2000,
@@ -62,12 +62,12 @@
             this.paymentInstallementPlan.Setup(x => x.CreatePaymentPlan(It.IsAny<PaymentPlanRequest>()))
                 .Returns(payment);
 
-            this.mediator.Setup(x => x.Send(It.IsAny<CreatePaymentInstallementPlanCommand>(), new CancellationToken()));
+            this.mediator.Setup(x => x.Send(It.IsAny<CreatePaymentInstallmentPlanCommand>(), new CancellationToken()));
 
-            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()))
+            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()))
                 .ReturnsAsync(response);
 
-            this.paymentInstallementController = new PaymentInstallementController(this.paymentInstallementPlan.Object,
+            this.paymentInstallementController = new PaymentInstallmentController(this.paymentInstallementPlan.Object,
                 this.mediator.Object);
 
             var result = await this.paymentInstallementController.Post(
@@ -79,17 +79,17 @@
                 }
               ) as OkObjectResult;
 
-            var responseResult = result?.Value as List<InstallementDetailsResponse>;
+            var responseResult = result?.Value as List<InstallmentDetailsResponse>;
             var paymentId = responseResult?.FirstOrDefault()?.PaymentId;
 
             Assert.Multiple(() =>
             {
                 Assert.That(responseResult?.Count, Is.EqualTo(1));
                 Assert.That(result?.StatusCode, Is.EqualTo(200));
-                Assert.That(result?.Value, Is.TypeOf<List<InstallementDetailsResponse>>());
+                Assert.That(result?.Value, Is.TypeOf<List<InstallmentDetailsResponse>>());
                 Assert.That(paymentId, Is.EqualTo(1));
-                this.mediator.Verify(x => x.Send(It.IsAny<CreatePaymentInstallementPlanCommand>(), new CancellationToken()), Times.Exactly(1));
-                this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
+                this.mediator.Verify(x => x.Send(It.IsAny<CreatePaymentInstallmentPlanCommand>(), new CancellationToken()), Times.Exactly(1));
+                this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
                 this.paymentInstallementPlan.Verify(x => x.CreatePaymentPlan(It.IsAny<PaymentPlanRequest>()), Times.Once);
             });
         }
@@ -99,11 +99,11 @@
         {
             this.paymentInstallementPlan.Setup(x => x.CreatePaymentPlan(It.IsAny<PaymentPlanRequest>()));
 
-            this.mediator.Setup(x => x.Send(It.IsAny<CreatePaymentInstallementPlanCommand>(), new CancellationToken()));
+            this.mediator.Setup(x => x.Send(It.IsAny<CreatePaymentInstallmentPlanCommand>(), new CancellationToken()));
 
-            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()));
+            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()));
 
-            this.paymentInstallementController = new PaymentInstallementController(this.paymentInstallementPlan.Object,
+            this.paymentInstallementController = new PaymentInstallmentController(this.paymentInstallementPlan.Object,
                this.mediator.Object);
 
             this.paymentInstallementController.ModelState.AddModelError("Amount", "Amount is required.");
@@ -118,8 +118,8 @@
         [Test]
         public async Task Should_Get_PaymentInstallementPlan_WithStatus200Ok()
         {
-            var response = new List<InstallementDetailsResponse>()
-            { new InstallementDetailsResponse()
+            var response = new List<InstallmentDetailsResponse>()
+            { new InstallmentDetailsResponse()
                 {
                    PaymentId = 1,
                    DueAmount = 2000,
@@ -127,15 +127,15 @@
                 }
             };
 
-            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()))
+            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()))
              .ReturnsAsync(response);
 
-            this.paymentInstallementController = new PaymentInstallementController(this.paymentInstallementPlan.Object,
+            this.paymentInstallementController = new PaymentInstallmentController(this.paymentInstallementPlan.Object,
               this.mediator.Object);
 
             var result = await this.paymentInstallementController.Get(1) as OkObjectResult;
 
-            var resultResponse = result?.Value as List<InstallementDetailsResponse>;
+            var resultResponse = result?.Value as List<InstallmentDetailsResponse>;
 
             var paymentId = resultResponse?.FirstOrDefault()?.PaymentId;
 
@@ -144,20 +144,20 @@
                 Assert.That(resultResponse?.Count, Is.EqualTo(1));
                 Assert.That(paymentId, Is.EqualTo(1));
                 Assert.That(result?.StatusCode, Is.EqualTo(200));
-                this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
+                this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
             });
         }
 
         [Test]
         public async Task Should_Not_Get_PaymentInstallementPlan_WithStatus204NoContent()
         {
-            var response = new List<InstallementDetailsResponse>() { };
+            var response = new List<InstallmentDetailsResponse>() { };
 
 
-            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()))
+            this.mediator.Setup(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()))
              .ReturnsAsync(response);
 
-            this.paymentInstallementController = new PaymentInstallementController(this.paymentInstallementPlan.Object,
+            this.paymentInstallementController = new PaymentInstallmentController(this.paymentInstallementPlan.Object,
               this.mediator.Object);
 
             var result = await this.paymentInstallementController.Get(1) as NoContentResult;
@@ -165,7 +165,7 @@
             Assert.Multiple(() =>
                 {
                     Assert.That(result?.StatusCode, Is.EqualTo(204));
-                    this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallementPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
+                    this.mediator.Verify(x => x.Send(It.IsAny<GetPaymentInstallmentPlanByIdQuery>(), new CancellationToken()), Times.Exactly(1));
                 });
         }
     }

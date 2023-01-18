@@ -6,18 +6,18 @@
     using Zip.Installments.Infrastructure.Context;
 
     /// <summary>
-    /// Class defines method to create payment installement plan.
+    /// Class defines method to create payment installment plan.
     /// </summary>
-    public class CreatePaymentInstallementPlanCommand : IRequest<int>
+    public class CreatePaymentInstallmentPlanCommand : IRequest<int>
     {
         private readonly Payment payment;
 
-        public CreatePaymentInstallementPlanCommand(Payment payment)
+        public CreatePaymentInstallmentPlanCommand(Payment payment)
         {
             this.payment = payment;
         }
 
-        public class CreatePaymentInstallementPlanCommandHandler : IRequestHandler<CreatePaymentInstallementPlanCommand, int>
+        public class CreatePaymentInstallementPlanCommandHandler : IRequestHandler<CreatePaymentInstallmentPlanCommand, int>
         {
             private readonly ZipPayContext zipPayContext;
 
@@ -26,7 +26,7 @@
                 this.zipPayContext = zipPayContext;
             }
 
-            public async Task<int> Handle(CreatePaymentInstallementPlanCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(CreatePaymentInstallmentPlanCommand request, CancellationToken cancellationToken)
             {
                 this.zipPayContext.Payment.Add(request.payment);
 

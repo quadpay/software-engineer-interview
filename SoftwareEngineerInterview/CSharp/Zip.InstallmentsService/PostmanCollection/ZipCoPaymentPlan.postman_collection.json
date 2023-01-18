@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ZipCoPaymentPlan",
+		"_postman_id": "f3f2e7a9-9daf-d36c-4517-9dcbf0791b46",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreatePaymentInstallmentPlan_Post",
+			"request": {
+				"url": "https://localhost:7188/v1/paymentinstallment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 3000,\r\n  \"numofInstallement\": 6,\r\n  \"frequency\": 14\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetPaymentInstallmentPlanById_Get",
+			"request": {
+				"url": "https://localhost:7188/v1/paymentinstallment/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

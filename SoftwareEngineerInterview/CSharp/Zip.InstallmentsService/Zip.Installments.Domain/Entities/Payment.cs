@@ -9,7 +9,7 @@
     {
         public Payment()
         {
-            this.InstallementPlans = new HashSet<InstallementPlan>();
+            this.InstallmentPlans = new HashSet<InstallmentPlan>();
         }
 
         /// <summary>
@@ -18,6 +18,6 @@
         public decimal Amount { get; set; }
 
         //Navigation property
-        public virtual ICollection<InstallementPlan> InstallementPlans { get; set; }
+        public virtual ICollection<InstallmentPlan> InstallmentPlans { get; set; }
     }
 }

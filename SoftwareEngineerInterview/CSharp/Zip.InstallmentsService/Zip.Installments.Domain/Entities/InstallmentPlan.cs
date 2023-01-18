@@ -3,9 +3,9 @@
     using Zip.Installments.Domain.BaseEntity;
 
     /// <summary>
-    /// Class declares properties of intallementplan entity class.
+    /// Class declares properties of intallmentplan entity class.
     /// </summary>
-    public class InstallementPlan : Entity
+    public class InstallmentPlan : Entity
     {
         /// <summary>
         /// Due date.
