@@ -45,5 +45,6 @@ func (p PaymentPlan) SetInstallments(installments []installment.Installment) {
 // New creates a new payment plan according to purchase amount.
 func New(purchaseAmount float64) (PaymentPlan, error) {
 	// TODO
-	return PaymentPlan{}, nil
+	purchaseAmount = paymentplan * installments
+	return PaymentPlan{purchaseAmount}, nil
 }

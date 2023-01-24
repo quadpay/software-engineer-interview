@@ -13,7 +13,8 @@ namespace Zip.InstallmentsService
         public PaymentPlan CreatePaymentPlan(decimal purchaseAmount)
         {
             // TODO
-            return new PaymentPlan();
+            purchaseAmount = paymentplan * installments
+            return new PaymentPlan(purchaseAmount);
         }
     }
 }
