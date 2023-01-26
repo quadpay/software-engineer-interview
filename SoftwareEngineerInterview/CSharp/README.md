@@ -14,7 +14,7 @@ dotnet restore
 
 ## Quick Start
 ```
-cd Zip.InstallmentsService
+cd Zip.InstallmentsService\ZipPayment.API
 dotnet run
 ```
 
@@ -29,6 +29,7 @@ dotnet test Zip.InstallmentsService.sln
 cd Zip.InstallmentsService
 dotnet tool install --global dotnet-ef --version 6.*
 
+cd Zip.InstallmentsService\ZipPayment.API
 dotnet ef database update
 ```
 
