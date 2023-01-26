@@ -1,19 +1,16 @@
-namespace Zip.InstallmentsService
+﻿
+namespace Zip.InstallmentsService.Interface
 {
     /// <summary>
-    /// This class is responsible for building the PaymentPlan according to the Zip product definition.
+    /// Factory interface for creating payment planner object
     /// </summary>
-    public class PaymentPlanFactory
+    public interface IPaymentFactory
     {
         /// <summary>
         /// Builds the PaymentPlan instance.
         /// </summary>
         /// <param name="purchaseAmount">The total amount for the purchase that the customer is making.</param>
         /// <returns>The PaymentPlan created with all properties set.</returns>
-        public PaymentPlan CreatePaymentPlan(decimal purchaseAmount)
-        {
-            // TODO
-            return new PaymentPlan();
-        }
+        IPaymentPlanner CreatePaymentPlan(decimal purchaseAmount);
     }
 }

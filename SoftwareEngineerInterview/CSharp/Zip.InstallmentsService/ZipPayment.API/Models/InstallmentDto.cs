@@ -1,11 +1,9 @@
-using System;
-
-namespace Zip.InstallmentsService
+﻿namespace ZipPayment.API.Models
 {
     /// <summary>
-    /// Data structure which defines all the properties for an installment.
+    /// Defines all the properties for an installment.
     /// </summary>
-    public class Installment
+    public class InstallmentDto
     {
         /// <summary>
         /// Gets or sets the unique identifier for each installment.
@@ -21,5 +19,5 @@ namespace Zip.InstallmentsService
         /// Gets or sets the amount of the installment.
         /// </summary>
         public decimal Amount { get; set; }
-	}
+    }
 }
