@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZipPayment.API</name>
+    </assembly>
+    <members>
+        <member name="T:ZipPayment.API.Business.Services.IPaymentService">
+            <summary>
+            PaymentService interface to create a payment plan and instalments via business objects that 
+            connect to the repository call to business logic creates a payment plan and map Database 
+            Entity to DTo objects
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.IPaymentService.CreatePaymentPlan(System.Decimal,System.Int32,System.Int32)">
+            <summary>
+            CreatePaymentPlan
+            </summary>
+            <param name="amount">purchase amount</param>
+            <param name="noOfInstalments">noOfInstalments</param>
+            <param name="frequencyInWeeks">frequencyInWeeks</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.IPaymentService.GetPaymentPlanAsync(System.Guid)">
+            <summary>
+            Get Payment Plan Asynchronously for matched paymentId
+            </summary>
+            <param name="id">paymentId</param>
+            <returns>PaymentPlanDto</returns>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.IPaymentService.GetAllPaymentPlansAsync">
+            <summary>
+            Get All Payment Plan Asynchronously 
+            </summary>
+            <returns>List of PaymentPlanDto</returns>
+        </member>
+        <member name="T:ZipPayment.API.Business.Services.PaymentService">
+            <summary>
+            Payment service encapsulate the business logic and call repository to save object in to database
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.PaymentService.#ctor(Zip.InstallmentsService.Interface.IPaymentFactory,ZipPayment.API.DataAccess.Services.IPaymentRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor: Payment service encapsulate the business logic and call repository to save object in to database
+            </summary>
+            <param name="paymentFactory">paymentFactory</param>
+            <param name="paymentRepository">paymentRepository</param>
+            <param name="mapper">Imap business object to Dto object</param>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.PaymentService.CreatePaymentPlan(System.Decimal,System.Int32,System.Int32)">
+            <summary>
+            CreatePaymentPlan
+            </summary>
+            <param name="amount">amount</param>
+            <param name="noOfInstalments">noOfInstalments</param>
+            <param name="frequencyInWeeks">frequencyInWeeks</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.PaymentService.GetAllPaymentPlansAsync">
+            <summary>
+            GetAllPaymentPlansAsync
+            </summary>
+            <returns>List of PaymentPlanEntity</returns>
+        </member>
+        <member name="M:ZipPayment.API.Business.Services.PaymentService.GetPaymentPlanAsync(System.Guid)">
+            <summary>
+            GetPaymentPlanAsync
+            </summary>
+            <param name="id">Guid</param>
+            <returns>PaymentPlanEntity</returns>
+        </member>
+        <member name="T:ZipPayment.API.Controllers.PaymentPlanController">
+            <summary>
+            PaymentPlan Controller class resposible to handle payment plan request and response
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Controllers.PaymentPlanController.#ctor(Microsoft.Extensions.Logging.ILogger{ZipPayment.API.Controllers.PaymentPlanController},ZipPayment.API.Business.Services.IPaymentService)">
+            <summary>
+            Constructor: Initialize PaymentPlanController by logger, paymentService dependencies
+            </summary>
+            <param name="logger">Logger instance to log information api request</param>
+            <param name="paymentService">Payment serive instance to create a payment plan</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:ZipPayment.API.Controllers.PaymentPlanController.GetPaymentPlan(System.Guid)">
+            <summary>
+            Get payment plan by id
+            </summary>
+            <param name="id">unique payment plan id</param>
+            <returns>payment plan</returns>
+            <response code="200">Returns requested payment plan for given payment plan id</response>
+        </member>
+        <member name="M:ZipPayment.API.Controllers.PaymentPlanController.GetPaymentPlans">
+            <summary>
+            Get all payment plans
+            </summary>
+            <returns>List of all payment plans</returns>
+            <response code="200">All payment plans</response>
+        </member>
+        <member name="M:ZipPayment.API.Controllers.PaymentPlanController.CreatePaymentPlan(System.Decimal,System.Int32,System.Int32)">
+            <summary>
+            Create a new payment plan with installments schedule
+            </summary>
+            <param name="amount">purchase amount</param>
+            <param name="noOfInstalments">no of installments</param>
+            <param name="frequencyInWeeks">frequency of payment in week</param>
+            <returns>Created Payment plan with installment details</returns>
+        </member>
+        <member name="T:ZipPayment.API.DataAccess.DbContexts.PaymentPlanContext">
+            <summary>
+            Class PaymentPlanContext represents the database a gateway for query and save payment entity in the database
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.DbContexts.PaymentPlanContext.PaymentPlans">
+            <summary>
+            Query and save payment entity in the database
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.DbContexts.PaymentPlanContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{ZipPayment.API.DataAccess.DbContexts.PaymentPlanContext})">
+            <summary>
+            Constructor: Create an instance of the PaymentPlanContext object with connecting string to connect SQLite database
+            </summary>
+            <param name="options">DbContextOptions</param>
+        </member>
+        <member name="T:ZipPayment.API.DataAccess.Entities.InstallmentEntity">
+            <summary>
+            A Class defines all the properties for an installment to save in the database
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.InstallmentEntity.Id">
+            <summary>
+            Id uniquely identify the Installment for the payment
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.InstallmentEntity.DueDate">
+            <summary>
+            Installment due date
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.InstallmentEntity.Amount">
+            <summary>
+            Amount of installment
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.InstallmentEntity.PaymentPlan">
+            <summary>
+            Foreign key relation to payment plan
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.InstallmentEntity.PaymentPlanEntityId">
+            <summary>
+            Payment Plan reference key entity id
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Entities.InstallmentEntity.#ctor(System.Decimal)">
+            <summary>
+            Constructor: InstallmentEntity initialize with installment amount
+            </summary>
+            <param name="amount"></param>
+        </member>
+        <member name="T:ZipPayment.API.DataAccess.Entities.PaymentPlanEntity">
+            <summary>
+            A Class defines all the properties for an payment plan to save in the database
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.PaymentPlanEntity.Id">
+            <summary>
+            Id uniquely identify the payment plan for the amount
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.PaymentPlanEntity.PurchaseAmount">
+            <summary>
+            Total amount for the purchase
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.DataAccess.Entities.PaymentPlanEntity.Installments">
+            <summary>
+            Installments for the purchase that the customer is making.
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Entities.PaymentPlanEntity.#ctor(System.Decimal)">
+            <summary>
+            Constructor: PaymentPlanEntity initialize with purchase amount
+            </summary>
+            <param name="purchaseAmount"></param>
+        </member>
+        <member name="T:ZipPayment.API.DataAccess.Services.IPaymentRepository">
+            <summary>
+            PaymentRepository define business object interface for creating retreiving payment plans
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.GetPaymentPlansAsync">
+            <summary>
+            Get all payment plans asynchronously from database
+            </summary>
+            <returns>List of PaymentPlan</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.GetPaymentPlanAsync(System.Guid)">
+            <summary>
+            Get payment plan asynchronously from database for given payment plan id
+            </summary>
+            <param name="id">paymentPlanId</param>
+            <returns>PaymentPlan</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.GetInstallmentsAsync">
+            <summary>
+            Get all installments asynchronously from database
+            </summary>
+            <returns>List of Installments</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.GetInstallmentAsync(System.Guid)">
+            <summary>
+             Get installment asynchronously from database for given installment id
+            </summary>
+            <param name="id">installmentId</param>
+            <returns>Installment</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.AddPaymentPlan(ZipPayment.API.DataAccess.Entities.PaymentPlanEntity)">
+            <summary>
+            Add Payment plan in to database
+            </summary>
+            <param name="paymentPlan">paymentPlan</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.IPaymentRepository.SaveChangesAsync">
+            <summary>
+            Save changes in to database
+            </summary>
+            <returns>True/False</returns>
+        </member>
+        <member name="T:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository">
+            <summary>
+            Class SQLitePaymentRepository to query and save payment and installment entities in SQLite database
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.#ctor(ZipPayment.API.DataAccess.DbContexts.PaymentPlanContext)">
+            <summary>
+            Constructor: Initialize SQLitePaymentRepository object with dbContext
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.GetInstallmentAsync(System.Guid)">
+            <summary>
+             Get installment asynchronously from database for given installment id
+            </summary>
+            <param name="id">installmentId</param>
+            <returns>Installment</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.GetInstallmentsAsync">
+            <summary>
+            Get all installments asynchronously from database
+            </summary>
+            <returns>List of Installments</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.GetPaymentPlanAsync(System.Guid)">
+            <summary>
+            Get payment plan asynchronously from database for given payment plan id
+            </summary>
+            <param name="id">paymentPlanId</param>
+            <returns>PaymentPlan</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.GetPaymentPlansAsync">
+            <summary>
+            Get all payment plans asynchronously from database
+            </summary>
+            <returns>List of PaymentPlan</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.AddPaymentPlan(ZipPayment.API.DataAccess.Entities.PaymentPlanEntity)">
+            <summary>
+            Add Payment plan in to database
+            </summary>
+            <param name="paymentPlan">paymentPlan</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:ZipPayment.API.DataAccess.Services.SQLitePaymentRepository.SaveChangesAsync">
+            <summary>
+            Save changes in to database
+            </summary>
+            <returns>True/False</returns>
+        </member>
+        <member name="T:ZipPayment.API.ExtensionHelpers.IEnumerableExtensions">
+            <summary>
+            Shape data class using dynamically add the objects using ExpandoObject
+            </summary>
+        </member>
+        <member name="T:ZipPayment.API.ExtensionHelpers.ServiceRegistrationExtensions">
+            <summary>
+            Service Extension class for business services used in ZipPayment Api, Repository and db context service
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.ExtensionHelpers.ServiceRegistrationExtensions.RegisterBusinessServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Extension method on service collection to register business services used in zip api project
+            </summary>
+            <param name="services">IServiceCollection</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:ZipPayment.API.ExtensionHelpers.ServiceRegistrationExtensions.RegisterDataService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Extension method on service collection to register data services used in zip api project
+            </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="T:ZipPayment.API.MapperProfiles.InstallmentProfile">
+            <summary>
+            A class to map  to and from Installment domain objects in Installment entity objects
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.MapperProfiles.InstallmentProfile.#ctor">
+            <summary>
+            Constructor: map  to and from Installment domain objects in Installment entity objects
+            </summary>
+        </member>
+        <member name="T:ZipPayment.API.MapperProfiles.PaymentPlanProfile">
+            <summary>
+            A Class to Map to and from PaymentPlan domain objects in PaymentPlan entity objects
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.MapperProfiles.PaymentPlanProfile.#ctor">
+            <summary>
+            Constructor: Map to and from PaymentPlan domain objects in PaymentPlan entity objects
+            </summary>
+        </member>
+        <member name="T:ZipPayment.API.Middleware.ExceptionHandlerMiddleware">
+            <summary>
+            ExceptionHandlerMiddleware handles the unhandled exception and translate in to appropriate http status code 
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Middleware.ExceptionHandlerMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{ZipPayment.API.Middleware.ExceptionHandlerMiddleware})">
+            <summary>
+            Constructor: initialize with next middleware handler
+            </summary>
+            <param name="next">RequestDelegate</param>
+            <param name="logger">logger</param>
+        </member>
+        <member name="M:ZipPayment.API.Middleware.ExceptionHandlerMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke the next handler in the http pipeline request
+            </summary>
+            <param name="context">HttpContext</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:ZipPayment.API.Middleware.ExceptionHandlerMiddleware.ConvertException(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Convert unhandeld exception in to appropriate HttpStatusCode
+            </summary>
+            <param name="context"></param>
+            <param name="ex"></param>
+            <returns>error message</returns>
+        </member>
+        <member name="T:ZipPayment.API.Middleware.MiddlewareExtensions">
+            <summary>
+            Create a MiddlewareExtensions
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Middleware.MiddlewareExtensions.UseCustomExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Returns ExceptionHandlerMiddleware to handle custom exceptions
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZipPayment.API.Models.InstallmentDto">
+            <summary>
+            Defines all the properties for an installment.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.InstallmentDto.Id">
+            <summary>
+            Gets or sets the unique identifier for each installment.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.InstallmentDto.DueDate">
+            <summary>
+            Gets or sets the date that the installment payment is due.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.InstallmentDto.Amount">
+            <summary>
+            Gets or sets the amount of the installment.
+            </summary>
+        </member>
+        <member name="T:ZipPayment.API.Models.LinkDto">
+            <summary>
+            Link Dto attribute link information for api
+            </summary>
+        </member>
+        <member name="M:ZipPayment.API.Models.LinkDto.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Link dto
+            </summary>
+            <param name="href">Href</param>
+            <param name="rel">string</param>
+            <param name="method">HttpMethod</param>
+        </member>
+        <member name="T:ZipPayment.API.Models.PaymentPlanDto">
+            <summary>
+            Defines all the properties for a purchase Payment plan.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.PaymentPlanDto.Id">
+            <summary>
+            Gets or sets the unique identifier for each payment plan.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.PaymentPlanDto.PurchaseAmount">
+            <summary>
+            Gets or sets the purchase amount of the installment.
+            </summary>
+        </member>
+        <member name="P:ZipPayment.API.Models.PaymentPlanDto.Installments">
+            <summary>
+            Gets or sets the installments.
+            </summary>
+        </member>
+    </members>
+</doc>

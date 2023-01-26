@@ -2,3 +2,6 @@
 bin
 obj
 *DotSettings.user
+/SoftwareEngineerInterview/CSharp/Zip.InstallmentsService/ZipPayment.API/ZipPayment.API.csproj.user
+/SoftwareEngineerInterview/CSharp/Zip.InstallmentsService/TestResults
+/SoftwareEngineerInterview/CSharp/Zip.InstallmentsService/.vs
