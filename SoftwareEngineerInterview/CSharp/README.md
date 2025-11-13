@@ -3,7 +3,7 @@
 ## Requirements
 ```
 Visual Studio Code
-Dotnet SDK 6.0
+Dotnet SDK 8.0
 ```
 
 ## Install
